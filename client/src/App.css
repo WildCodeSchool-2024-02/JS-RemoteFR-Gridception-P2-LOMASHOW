@@ -3,7 +3,7 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.7;
-  color: #eee;
+  color: black;
   margin: 0;
 }
 
@@ -138,12 +138,14 @@ footer {
 }
 
 @keyframes blink {
+
   20%,
   24%,
   55% {
     color: #111;
     text-shadow: none;
   }
+
   0%,
   19%,
   21%,

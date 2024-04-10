@@ -4,49 +4,63 @@ import "./MovieCard.css";
 
 function MovieCard() {
   const [datas, setDatas] = useState();
+  const [index, setIndex] = useState(0);
+  const [page, setPage] = useState(1);
 
-  const options = {
-    method: "GET",
-    url: "https://api.themoviedb.org/3/movie/top_rated",
-    params: { language: "en-US", page: "1" },
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
-    },
+  const handleClick = () => {
+    if (index <= 18) {
+      setIndex(index + 1);
+    }
+    if (index >= 19) {
+      setPage(page + 1);
+      setIndex(index - 19);
+    }
   };
 
   useEffect(() => {
-    axios
-      .request(options)
-      .then((response) => {
-        setDatas(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-  console.info(datas);
+    const options = {
+      method: "GET",
+      url: "https://api.themoviedb.org/3/movie/popular",
+      params: { language: "fr-FR", page: `${page}` },
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
+      },
+    };
+
+    const getMovies = () => {
+      axios
+        .request(options)
+        .then((response) => {
+          setDatas(response.data.results[index]);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
+
+    getMovies();
+  }, [index, page]);
 
   return (
     <section className="movie-card-component">
       <img
         className="movie-card-img"
-        src={`https://image.tmdb.org/t/p/w500/${datas?.results[2]?.poster_path}`}
-        alt={datas?.results[2]?.vote_average}
+        src={`https://image.tmdb.org/t/p/w500/${datas?.poster_path}`}
+        alt={datas?.vote_average}
       />
+      <p>{datas?.overview} </p>
+
+      <button
+        type="button"
+        onClick={() => {
+          handleClick();
+        }}
+      >
+        SET
+      </button>
     </section>
   );
 }
 
 export default MovieCard;
-
-// <figcaption>
-//         <figure>
-//           <img
-//             src={`https://image.tmdb.org/t/p/w500/${datas?.results[2]?.poster_path}`}
-//             alt={datas?.results[2]?.vote_average}
-//           />
-//         </figure>
-//         {datas?.results[2]?.title}
-//         <p>{datas?.results[2]?.overview}</p>
-//       </figcaption>

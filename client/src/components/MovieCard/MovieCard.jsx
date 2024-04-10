@@ -10,7 +10,7 @@ function MovieCard() {
   const handleClick = () => {
     if (index >= 19) {
       setPage(page + 1);
-      return setIndex(index - 19);
+      return setIndex(0);
     }
     return setIndex(index + 1);
   };

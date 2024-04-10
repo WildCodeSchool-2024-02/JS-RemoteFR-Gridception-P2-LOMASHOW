@@ -1,0 +1,10 @@
+.movie-card-component {
+  display: flex;
+  justify-content: center;
+}
+
+.movie-card-img {
+  width: 95%;
+  height: 80%;
+  border-radius: 10%;
+}

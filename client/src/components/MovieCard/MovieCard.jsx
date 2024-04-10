@@ -8,13 +8,11 @@ function MovieCard() {
   const [page, setPage] = useState(1);
 
   const handleClick = () => {
-    if (index <= 18) {
-      setIndex(index + 1);
-    }
     if (index >= 19) {
       setPage(page + 1);
-      setIndex(index - 19);
+      return setIndex(index - 19);
     }
+    return setIndex(index + 1);
   };
 
   useEffect(() => {

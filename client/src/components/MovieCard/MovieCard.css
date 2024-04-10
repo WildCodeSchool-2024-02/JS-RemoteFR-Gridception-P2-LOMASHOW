@@ -1,0 +1,21 @@
+@media screen and (max-width: 932px) {
+
+    body {
+        background-color: #27282c;
+        color: white;
+    }
+
+    .movieDetails {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 90%;
+        align-items: center;
+    }
+
+    .movieImg {
+        max-height: 80vh;
+        max-width: 95vh;
+        border-radius: 20px;
+    }
+}

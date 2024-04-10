@@ -1,0 +1,25 @@
+.buttonChange {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    gap: 100px;
+}
+
+.button1 {
+    background-color: #27282c;
+    border-style: none;
+}
+
+.button2 {
+    background-color: #27282c;
+    border-style: none;
+}
+
+.button1 img {
+    width: 50px;
+}
+
+.button2 img {
+    width: 50px;
+}

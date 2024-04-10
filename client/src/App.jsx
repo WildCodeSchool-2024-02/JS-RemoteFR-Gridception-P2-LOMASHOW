@@ -1,45 +1,43 @@
 import "./App.css";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
+
+
+import ButtonChange from "./components/ButtonChange/ButtonChange";
+import MovieCard from "./components/MovieCard/MovieCard";
+
+const movieList = [
+  {
+    name: "Joker - Folie à deux",
+    img: "https://ecranfantastique.fr/wp-content/uploads/2024/04/Jocker-2-copie.jpg",
+  },
+
+  {
+    name: "Dune - Part Two",
+    img: "https://ecranfantastique.fr/wp-content/uploads/2023/07/dune-poster-2.jpeg",
+  },
+
+  {
+    name: "Maxxxine",
+    img: "https://ecranfantastique.fr/wp-content/uploads/2024/04/maxxxineposter3.jpeg",
+  },
+
+  {
+    name: "Les Demons de la nuit",
+    img: "https://ecranfantastique.fr/wp-content/uploads/2024/04/Uc-Harfliler-Nazar-aff.jpg",
+  },
+];
 
 function App() {
-  const [datas, setDatas] = useState();
 
-  const options = {
-    method: "GET",
-    url: "https://api.themoviedb.org/3/movie/top_rated",
-    params: { language: "en-US", page: "1" },
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
-    },
-  };
+  const [movieIndex, setMovieIndex] = useState(0);
 
-  useEffect(() => {
-    axios
-      .request(options)
-      .then((response) => {
-        setDatas(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-  console.info(datas);
 
   return (
     <div>
-      <figcaption>
-        <figure>
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${datas?.results[2]?.poster_path}`}
-            alt={datas?.results[2]?.vote_average}
-          />
-        </figure>
-        {datas?.results[2]?.title}
-        <p>{datas?.results[2]?.overview}</p>
-      </figcaption>
+      <MovieCard movie={movieList[movieIndex]} />
+      <ButtonChange setMovieIndex={setMovieIndex} movieIndex={movieIndex} movieList={movieList} />
     </div>
+
   );
 }
 

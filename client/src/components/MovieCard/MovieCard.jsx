@@ -1,23 +1,76 @@
-import PropTypes from "prop-types";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import ButtonChange from "../../components/ButtonChange/ButtonChange";
 import "./MovieCard.css";
 
-function MovieCard({ movie }) {
+function MovieCard() {
+    const [datas, setDatas] = useState();
+    const [index, setIndex] = useState(0);
+    const [page, setPage] = useState(1);
+
+
+
+    useEffect(() => {
+
+        const options = {
+            method: "GET",
+            url: "https://api.themoviedb.org/3/movie/popular",
+            params: { language: "fr-FR", page: `${page}` },
+            headers: {
+                accept: "application/json",
+                Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
+            },
+        };
+
+        const getMovies = () => {
+            axios
+                .request(options)
+                .then((response) => {
+                    setDatas(response.data.results[index]);
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        };
+
+        getMovies();
+    }, [index, page]);
+
     return (
-        <section>
-            <div className="movieDetails">
-                <figcaption>{movie.name}</figcaption>
-                <img className="movieImg" src={movie.img} />
+        <section className="movie-card-component">
+            <img
+                className="movie-card-img"
+                src={`https://image.tmdb.org/t/p/w500/${datas?.poster_path}`}
+                alt={datas?.vote_average}
+            />
+            <p>{datas?.overview} </p>
+
+            <p>Page {page}</p>
+            <p>index {index}</p>
+            <div>
+                <ButtonChange setIndex={setIndex} index={index} page={page} setPage={setPage} />
             </div>
 
         </section>
     );
 }
 
-MovieCard.propTypes = {
-    movie: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        imgSrc: PropTypes.string,
-    }),
-};
-
 export default MovieCard;
+
+
+// const handleClick = () => {
+//     if (index >= 19) {
+//         setPage(page + 1);
+//         return setIndex(0);
+//     }
+//     return setIndex(index + 1);
+// };
+
+/* <button
+                type="button"
+                onClick={() => {
+                    handleClick();
+                }}
+            >
+                SET
+            </button> */

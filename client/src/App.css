@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
   box-sizing: border-box;
 }
@@ -8,3 +9,12 @@ body {
   color: white;
   margin: 0;
 }
+=======
+header {
+  display: flex;
+
+  img {
+    margin: 0.5rem auto;
+  }
+}
+>>>>>>> ec9d80156d9cb138cd7b642fb0754b7efc2abe0c

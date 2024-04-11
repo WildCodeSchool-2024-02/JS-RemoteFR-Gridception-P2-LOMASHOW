@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ButtonChange from "../../components/ButtonChange/ButtonChange";
+import ButtonChange from "../ButtonChange/ButtonChange";
 import "./MovieCard.css";
 
 function MovieCard() {

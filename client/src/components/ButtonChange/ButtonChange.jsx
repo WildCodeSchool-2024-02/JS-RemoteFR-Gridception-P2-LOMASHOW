@@ -8,7 +8,7 @@ function ButtonChange({ setIndex, index, page, setPage }) {
   useEffect(() => {
     if (page <= 1 && index <= 0) setHideBtn(true);
     else setHideBtn(false);
-  }, [index]);
+  }, [index, page]);
 
   const handleClickPrecedent = () => {
     if (index <= 1 && page > 1) {
@@ -32,14 +32,14 @@ function ButtonChange({ setIndex, index, page, setPage }) {
     <section className="buttonChange">
       <div>
         {!hideBtn ? (
-          <button className="button1" onClick={handleClickPrecedent}>
-            <img src="./src/assets/images/button1.png" />
+          <button className="button1" type="button" onClick={handleClickPrecedent}>
+            <img src="./src/assets/images/button1.png" alt="precedent" />
           </button>
         ) : undefined}
       </div>
       <div>
-        <button className="button2" onClick={handleClickSuivant}>
-          <img src="./src/assets/images/button2.png" />
+        <button className="button2" type="button" onClick={handleClickSuivant}>
+          <img src="./src/assets/images/button2.png" alt="suivant"/>
         </button>
       </div>
     </section>

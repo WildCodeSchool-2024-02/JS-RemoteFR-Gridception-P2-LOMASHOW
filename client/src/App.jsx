@@ -2,9 +2,7 @@ import MovieCard from "./components/MovieCard/MovieCard";
 import Movinder from "./assets/images/MovInder175.png";
 import "./App.css";
 
-
 function App() {
-
   return (
     <>
       <header>
@@ -14,7 +12,6 @@ function App() {
         <MovieCard />
       </div>
     </>
-
   );
 }
 

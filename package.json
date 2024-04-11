@@ -11,7 +11,10 @@
     "type": "git",
     "url": "git+https://github.com/LOMASHOW/..git"
   },
-  "workspaces": ["client", "server"],
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
     "postinstall": "husky install",
     "db:migrate": "npm run db:migrate --workspace=server",

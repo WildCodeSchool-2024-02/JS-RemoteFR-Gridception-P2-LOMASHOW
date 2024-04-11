@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+
 }
 
 .button1 {
@@ -16,9 +17,9 @@
 }
 
 .button1 img {
-    width: 50px;
+    width: 40px;
 }
 
 .button2 img {
-    width: 50px;
+    width: 40px;
 }

@@ -8,13 +8,17 @@ function MovieCard() {
     const [index, setIndex] = useState(0);
     const [page, setPage] = useState(1);
 
-
+    const description = () => {
+        if (!datas?.overview) {
+            return "Description à venir"
+        } return datas?.overview
+    }
 
     useEffect(() => {
 
         const options = {
             method: "GET",
-            url: "https://api.themoviedb.org/3/movie/popular",
+            url: "https://api.themoviedb.org/3/movie/top_rated",
             params: { language: "fr-FR", page: `${page}` },
             headers: {
                 accept: "application/json",
@@ -43,9 +47,13 @@ function MovieCard() {
                 src={`https://image.tmdb.org/t/p/w500/${datas?.poster_path}`}
                 alt={datas?.vote_average}
             />
-            <p>{datas?.overview} </p>
+            <h2 className="title">{datas?.title}</h2>
+            <div className="overview-container">
+                <p className="overview" > {description()}</p>
 
-            <div>
+            </div>
+
+            <div className="button" >
                 <ButtonChange setIndex={setIndex} index={index} page={page} setPage={setPage} />
             </div>
 

@@ -45,8 +45,6 @@ function MovieCard() {
             />
             <p>{datas?.overview} </p>
 
-            <p>Page {page}</p>
-            <p>index {index}</p>
             <div>
                 <ButtonChange setIndex={setIndex} index={index} page={page} setPage={setPage} />
             </div>
@@ -58,19 +56,3 @@ function MovieCard() {
 export default MovieCard;
 
 
-// const handleClick = () => {
-//     if (index >= 19) {
-//         setPage(page + 1);
-//         return setIndex(0);
-//     }
-//     return setIndex(index + 1);
-// };
-
-/* <button
-                type="button"
-                onClick={() => {
-                    handleClick();
-                }}
-            >
-                SET
-            </button> */

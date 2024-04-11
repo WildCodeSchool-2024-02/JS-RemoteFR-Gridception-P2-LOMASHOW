@@ -50,14 +50,15 @@ export default ButtonChange;
 
 
 
-// ButtonChange.propTypes = {
-//     index: PropTypes.number.isRequired,
-//     setIndex: PropTypes.func.isRequired,
-//     movieList: PropTypes.arrayOf(
-//         PropTypes.shape({
-//             name: PropTypes.string.isRequired,
-//             img: PropTypes.string,
-//         })
-//     ).isRequired,
+ButtonChange.propTypes = {
+    index: PropTypes.number.isRequired,
+    setIndex: PropTypes.func.isRequired,
+    setPage: PropTypes.func.isRequired,
+    page: PropTypes.arrayOf(
+        PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            img: PropTypes.string,
+        })
+    ).isRequired,
 
-// };
+};

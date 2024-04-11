@@ -1,26 +1,22 @@
-@media screen and (max-width: 932px) {
+.movie-card-component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
-    .movie-card-component {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
+.movie-card-img {
+    width: 95%;
+    height: 80%;
+    border-radius: 10%;
+}
 
-    .movie-card-img {
-        width: 95%;
-        height: 80%;
-        border-radius: 10%;
-    }
+.movie-card-component>p {
+    text-align: center;
+    font-size: 0.8rem;
+}
 
-    .movie-card-component>p {
-        text-align: center;
-        font-size: 0.8rem;
-    }
-
-    button {
-        width: 10rem;
-        height: 10rem;
-    }
-
+button {
+    width: 10rem;
+    height: 10rem;
 }

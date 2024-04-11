@@ -1,0 +1,38 @@
+.movie-card-component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.movie-card-img {
+    width: 85vw;
+    height: auto;
+    border-radius: 10%;
+}
+
+.movie-card-component>.overview-container>.overview {
+    text-align: center;
+    margin: 1rem 0.7rem 1rem 0.7rem;
+}
+
+.overview-container {
+    max-height: 15vh;
+    overflow: auto;
+    border: 1px solid #CCCCCE;
+    border-radius: 15px;
+    margin: 1rem 2rem;
+
+}
+
+.button {
+    position: absolute;
+    bottom: 0.5rem;
+}
+
+.title {
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 1rem 0.5rem 0 0.5rem;
+
+}

@@ -56,10 +56,5 @@ ButtonChange.propTypes = {
   index: PropTypes.number.isRequired,
   setIndex: PropTypes.func.isRequired,
   setPage: PropTypes.func.isRequired,
-  page: PropTypes.arrayOf(
-    PropTypes.shape({
-      overview: PropTypes.string.isRequired,
-      img: PropTypes.string,
-    })
-  ).isRequired,
+  page: PropTypes.number.isRequired,
 };

@@ -5,7 +5,7 @@ import Wishlist from "../Wishlist/Wishlist";
 
 import "./MovieCard.css";
 
-function MovieCard() {
+function MovieCard({activeFiltre}) {
   const [datas, setDatas] = useState();
   const [index, setIndex] = useState(0);
   const [page, setPage] = useState(1);
@@ -16,32 +16,37 @@ function MovieCard() {
       return "Description à venir";
     }
     return datas?.overview;
+  };  
+
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
+    },
   };
-
+  const getMovies = () => {
+    axios
+      .request(options)
+      .then((response) => {
+        setDatas(response.data.results[index]);
+      })
+      .catch((error) => {
+        console.error(error);
+      });      
+  };  
+  
   useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "https://api.themoviedb.org/3/movie/top_rated",
-      params: { language: "fr-FR", page: `${page}` },
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
-      },
-    };
-
-    const getMovies = () => {
-      axios
-        .request(options)
-        .then((response) => {
-          setDatas(response.data.results[index]);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    };
-
+    if (activeFiltre === ""){ // si il n'y a pas de filtre
+      options.url ="https://api.themoviedb.org/3/movie/top_rated",
+      options.params = { language: "fr-FR", page: `${page}` }
+    }
+    else{
+      options.url = "https://api.themoviedb.org/3/discover/movie"; // l'URL est appelé un "endpoint"
+      options.params ={language: "fr-FR", page: `${page}`, with_genres:activeFiltre}
+    }
     getMovies();
-  }, [index, page]);
+  }, [index, page, activeFiltre]); // tableau de dépendances
 
   return (
     <section className="movie-card-component">

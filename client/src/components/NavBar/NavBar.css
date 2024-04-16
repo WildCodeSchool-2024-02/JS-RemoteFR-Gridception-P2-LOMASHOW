@@ -1,0 +1,17 @@
+.navbar_container {
+    width: 100vw;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0.5rem;
+    border-radius: 10px;
+    
+}
+
+.nav {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+

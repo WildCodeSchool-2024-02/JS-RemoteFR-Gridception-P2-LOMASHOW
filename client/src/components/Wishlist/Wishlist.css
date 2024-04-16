@@ -1,0 +1,30 @@
+.wishlist-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: -100px;
+  height: 770px;
+  width: 400px;
+  padding: 30px;
+  box-sizing: border-box;
+  background: #212121d4;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  border-radius: 3rem;
+  animation: Opening-Pop-ups 0.2s linear 0s 1 normal forwards;
+}
+
+@keyframes Opening-Pop-ups {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}

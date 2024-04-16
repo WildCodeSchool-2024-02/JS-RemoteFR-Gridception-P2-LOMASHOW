@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ButtonChange from "../ButtonChange/ButtonChange";
+import Wishlist from "../Wishlist/Wishlist";
+
 import "./MovieCard.css";
 
 function MovieCard() {
   const [datas, setDatas] = useState();
   const [index, setIndex] = useState(0);
   const [page, setPage] = useState(1);
+  const [isWishlistOpen, setIsWishlistOpen] = useState(false);
 
   const description = () => {
     if (!datas?.overview) {
@@ -47,11 +50,26 @@ function MovieCard() {
         src={`https://image.tmdb.org/t/p/w500/${datas?.poster_path}`}
         alt={datas?.vote_average}
       />
+
       <h2 className="title">{datas?.title}</h2>
       <div className="overview-container">
         <p className="overview"> {description()}</p>
       </div>
 
+      <nav className=" navbar">
+        <div className="wishlist">
+          <button
+            type="button"
+            onClick={() => {
+              setIsWishlistOpen(true);
+            }}
+          >
+            {" "}
+            Open
+          </button>
+          {isWishlistOpen && <Wishlist closeWishlist={setIsWishlistOpen} />}
+        </div>
+      </nav>
       <div className="button">
         <ButtonChange
           setIndex={setIndex}

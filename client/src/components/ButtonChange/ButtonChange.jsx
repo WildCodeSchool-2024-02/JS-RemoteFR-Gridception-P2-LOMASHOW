@@ -11,7 +11,7 @@ function ButtonChange({ setIndex, index, page, setPage }) {
   }, [index, page]);
 
   const handleClickPrecedent = () => {
-    if (index <= 1 && page > 1) {
+    if (index <= 0 && page > 1) {
       setPage(page - 1);
       setIndex(19);
     } else {
@@ -32,14 +32,18 @@ function ButtonChange({ setIndex, index, page, setPage }) {
     <section className="buttonChange">
       <div>
         {!hideBtn ? (
-          <button className="button1" type="button" onClick={handleClickPrecedent}>
+          <button
+            className="button1"
+            type="button"
+            onClick={handleClickPrecedent}
+          >
             <img src="./src/assets/images/button1.png" alt="precedent" />
           </button>
         ) : undefined}
       </div>
       <div>
         <button className="button2" type="button" onClick={handleClickSuivant}>
-          <img src="./src/assets/images/button2.png" alt="suivant"/>
+          <img src="./src/assets/images/button2.png" alt="suivant" />
         </button>
       </div>
     </section>
@@ -52,10 +56,5 @@ ButtonChange.propTypes = {
   index: PropTypes.number.isRequired,
   setIndex: PropTypes.func.isRequired,
   setPage: PropTypes.func.isRequired,
-  page: PropTypes.arrayOf(
-    PropTypes.shape({
-      overview: PropTypes.string.isRequired,
-      img: PropTypes.string,
-    })
-  ).isRequired,
+  page: PropTypes.number.isRequired,
 };

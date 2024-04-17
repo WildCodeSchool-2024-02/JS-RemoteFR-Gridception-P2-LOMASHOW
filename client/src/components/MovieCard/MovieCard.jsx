@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ButtonChange from "../ButtonChange/ButtonChange";
 import Wishlist from "../Wishlist/Wishlist";
+import Like from "../Like/Like";
 
 import "./MovieCard.css";
 
@@ -10,6 +10,7 @@ function MovieCard() {
   const [index, setIndex] = useState(0);
   const [page, setPage] = useState(1);
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
+  const [likedMovie, setLikedMovie] = useState([]);
 
   const description = () => {
     if (!datas?.overview) {
@@ -52,6 +53,15 @@ function MovieCard() {
       />
 
       <h2 className="title">{datas?.title}</h2>
+      <Like
+        setIndex={setIndex}
+        index={index}
+        page={page}
+        setPage={setPage}
+        datas={datas}
+        likedMovie={likedMovie}
+        setLikedMovie={setLikedMovie}
+      />
       <div className="overview-container">
         <p className="overview"> {description()}</p>
       </div>
@@ -62,22 +72,17 @@ function MovieCard() {
             type="button"
             onClick={() => {
               setIsWishlistOpen(true);
+              if (isWishlistOpen === true) {
+                setIsWishlistOpen(false);
+              }
             }}
           >
             {" "}
-            Open
+            Wishlist
           </button>
-          {isWishlistOpen && <Wishlist closeWishlist={setIsWishlistOpen} />}
+          {isWishlistOpen && <Wishlist likedMovie={likedMovie} />}
         </div>
       </nav>
-      <div className="button">
-        <ButtonChange
-          setIndex={setIndex}
-          index={index}
-          page={page}
-          setPage={setPage}
-        />
-      </div>
     </section>
   );
 }

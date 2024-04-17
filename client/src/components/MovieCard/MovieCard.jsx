@@ -5,10 +5,9 @@ import Wishlist from "../Wishlist/Wishlist";
 
 import "./MovieCard.css";
 
-function MovieCard({activeFiltre}) {
+function MovieCard({activeFiltre, index, setIndex, page, setPage}) {
   const [datas, setDatas] = useState();
-  const [index, setIndex] = useState(0);
-  const [page, setPage] = useState(1);
+  const [nbFilmFiltre, setNbFilmFiltre] = useState();
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
 
   const description = () => {
@@ -18,8 +17,11 @@ function MovieCard({activeFiltre}) {
     return datas?.overview;
   };  
 
+  
   const options = {
     method: "GET",
+    url: "https://api.themoviedb.org/3/movie/top_rated",
+    params: { language: "fr-FR", page: `${page}` },
     headers: {
       accept: "application/json",
       Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
@@ -29,27 +31,29 @@ function MovieCard({activeFiltre}) {
     axios
       .request(options)
       .then((response) => {
-        setDatas(response.data.results[index]);
+        let listFilms = response.data.results;
+        if (activeFiltre !== ""){ 
+          listFilms = listFilms.filter(film => film.genre_ids.includes(activeFiltre))
+        }
+        if(listFilms.length == 0){
+          setPage(page +1)
+        }
+        setNbFilmFiltre(listFilms.length)
+        setDatas(listFilms[index]); 
       })
       .catch((error) => {
         console.error(error);
-      });      
-  };  
+      }); 
+  }; 
   
   useEffect(() => {
-    if (activeFiltre === ""){ // si il n'y a pas de filtre
-      options.url ="https://api.themoviedb.org/3/movie/top_rated",
-      options.params = { language: "fr-FR", page: `${page}` }
-    }
-    else{
-      options.url = "https://api.themoviedb.org/3/discover/movie"; // l'URL est appelé un "endpoint"
-      options.params ={language: "fr-FR", page: `${page}`, with_genres:activeFiltre}
-    }
     getMovies();
-  }, [index, page, activeFiltre]); // tableau de dépendances
+  }, [index, page, activeFiltre]); 
 
   return (
     <section className="movie-card-component">
+      <div className="details">
+      </div>
       <img
         className="movie-card-img"
         src={`https://image.tmdb.org/t/p/w500/${datas?.poster_path}`}
@@ -57,6 +61,7 @@ function MovieCard({activeFiltre}) {
       />
 
       <h2 className="title">{datas?.title}</h2>
+  
       <div className="overview-container">
         <p className="overview"> {description()}</p>
       </div>
@@ -81,6 +86,9 @@ function MovieCard({activeFiltre}) {
           index={index}
           page={page}
           setPage={setPage}
+          nbFilmFiltre={nbFilmFiltre}
+          setNbFilmFiltre={setNbFilmFiltre}
+
         />
       </div>
     </section>

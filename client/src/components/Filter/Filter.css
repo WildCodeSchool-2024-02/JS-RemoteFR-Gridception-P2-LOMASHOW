@@ -1,15 +1,15 @@
 .listFilter{
     text-align: center;
-    top: -363px;
+    top: -390px;
     height: 700px;
-    width: 400px;
-    padding: 30px;
+    width: 100vw;
+    padding: 10px;
     box-sizing: border-box;
     background: #212121d4;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    border-radius: 3rem;
+    border-radius: 40px;
     animation: Opening-Pop-ups 0.2s linear 0s 1 normal forwards;
     position: absolute;
     max-height: 80vh;
@@ -33,15 +33,18 @@
     border-style: none;
 }
 
-.filtre_button img {
-    width: 40px;
+.listFilter p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+  margin-left: 15%;
+  margin-right: 15%;
+  border-radius: 10px;
+  height: 30px;
+  font-size: larger;
 }
 
-/* .listFilter>.selectfilter {
-    border-radius: 10px;
-    width: 100%;
-    height: 5vh;
-    font-family: "Montserrat";
-    
-} */
+
 

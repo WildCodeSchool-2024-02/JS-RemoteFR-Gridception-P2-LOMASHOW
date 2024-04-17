@@ -2,17 +2,19 @@ import axios from 'axios';
 import { useEffect, useState } from "react";
 import "./Filter.css";
 
-function Filter ({setActiveFiltre}) {
+function Filter ({setActiveFiltre, setIndex, setPage}) {
 
   const [listFilter, setListFilter] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
-  const handleClick = () =>{  // ouvre le filtre grâce au bouton
+  const handleClick = () =>{  
     setShowModal(!showModal);
   }
-  const handleClickFilter = (id) =>{  // dans doc API, il faut mettre l'id en paramètres
-    setActiveFiltre(id)
-    setShowModal(false);
+  const handleClickFilter = (id) =>{  
+    setActiveFiltre(id) 
+    setShowModal(false)
+    setIndex(0)
+    setPage(1)
   }
 
     useEffect(() => {
@@ -36,27 +38,25 @@ function Filter ({setActiveFiltre}) {
               console.error(error);
             });
           };
-         
           getFilter();
-
+  
     },[]);
 
     return (
         <div >
-            {showModal && // condition d'affichage
+            {showModal && 
               <div className='listFilter'>
                 {listFilter.map(filtre => {                  
-                    return <p value={filtre.id} onClick={() => handleClickFilter(filtre.id)}>{filtre.name}</p>
+                    return <p className="filtre_description" key={filtre.id} onClick={() => handleClickFilter(filtre.id)}>{filtre.name}</p>
                     })
                   } 
               </div>
             }
             <button className="filtre_button" type="button" onClick={handleClick}>
-            <img src="./src/assets/images/list.png"/>
+            <img src="./src/assets/images/sliders.png"/>
             </button>
         </div>
     )
 }
-
 
   export default Filter;

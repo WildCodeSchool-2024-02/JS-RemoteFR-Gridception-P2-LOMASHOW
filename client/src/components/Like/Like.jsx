@@ -1,8 +1,19 @@
 import "./Like.css";
 import PropTypes from "prop-types";
 
-function Like({ index, setIndex, setPage, page }) {
-  const handleClickSuivant = () => {
+function Like({
+  index,
+  setIndex,
+  setPage,
+  page,
+  datas,
+  likedMovie,
+  setLikedMovie,
+}) {
+  const handleClickLike = () => {
+    const updatedLikedMovie = [datas, ...likedMovie];
+    setLikedMovie(updatedLikedMovie);
+
     if (index >= 19) {
       setPage(page + 1);
       setIndex(0);
@@ -10,12 +21,35 @@ function Like({ index, setIndex, setPage, page }) {
       setIndex(index + 1);
     }
   };
+  const handleClickDislike = () => {
+    if (index >= 19) {
+      setPage(page + 1);
+      setIndex(0);
+    } else {
+      setIndex(index + 1);
+    }
+  };
+
   return (
     <section className="LikeComponent">
-      <button type="button" onClick={handleClickSuivant}>
+      <button
+        type="button"
+        onClick={() => {
+          console.info(likedMovie);
+          handleClickLike();
+        }}
+      >
         Like
       </button>{" "}
-      <button type="button">Dislike</button>
+      <button
+        type="button"
+        onClick={() => {
+          console.info(likedMovie);
+          handleClickDislike();
+        }}
+      >
+        Dislike
+      </button>
     </section>
   );
 }
@@ -25,6 +59,41 @@ Like.propTypes = {
   setIndex: PropTypes.func.isRequired,
   setPage: PropTypes.func.isRequired,
   page: PropTypes.number.isRequired,
+  setLikedMovie: PropTypes.func.isRequired,
+  likedMovie: PropTypes.arrayOf(
+    PropTypes.shape({
+      adult: PropTypes.bool.isRequired,
+      backdrop_path: PropTypes.string.isRequired,
+      genre_ids: PropTypes.arrayOf(PropTypes.number).isRequired,
+      id: PropTypes.number.isRequired,
+      original_language: PropTypes.string.isRequired,
+      original_title: PropTypes.string.isRequired,
+      overview: PropTypes.string.isRequired,
+      popularity: PropTypes.number.isRequired,
+      poster_path: PropTypes.string.isRequired,
+      release_date: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      video: PropTypes.bool.isRequired,
+      vote_average: PropTypes.number.isRequired,
+      vote_count: PropTypes.number.isRequired,
+    }).isRequired
+  ).isRequired,
+  datas: PropTypes.shape({
+    adult: PropTypes.bool.isRequired,
+    backdrop_path: PropTypes.string.isRequired,
+    genre_ids: PropTypes.arrayOf(PropTypes.number).isRequired,
+    id: PropTypes.number.isRequired,
+    original_language: PropTypes.string.isRequired,
+    original_title: PropTypes.string.isRequired,
+    overview: PropTypes.string.isRequired,
+    popularity: PropTypes.number.isRequired,
+    poster_path: PropTypes.string.isRequired,
+    release_date: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    video: PropTypes.bool.isRequired,
+    vote_average: PropTypes.number.isRequired,
+    vote_count: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default Like;

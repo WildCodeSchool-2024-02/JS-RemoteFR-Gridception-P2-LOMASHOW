@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ButtonChange from "../ButtonChange/ButtonChange";
 import Wishlist from "../Wishlist/Wishlist";
+import Like from "../Like/Like";
 
 import "./MovieCard.css";
 
@@ -52,6 +52,7 @@ function MovieCard() {
       />
 
       <h2 className="title">{datas?.title}</h2>
+      <Like setIndex={setIndex} index={index} page={page} setPage={setPage} />
       <div className="overview-container">
         <p className="overview"> {description()}</p>
       </div>
@@ -70,14 +71,6 @@ function MovieCard() {
           {isWishlistOpen && <Wishlist closeWishlist={setIsWishlistOpen} />}
         </div>
       </nav>
-      <div className="button">
-        <ButtonChange
-          setIndex={setIndex}
-          index={index}
-          page={page}
-          setPage={setPage}
-        />
-      </div>
     </section>
   );
 }

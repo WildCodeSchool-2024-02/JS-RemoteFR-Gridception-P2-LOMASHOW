@@ -1,8 +1,11 @@
+.wishlist {
+  display: flex;
+}
 .wishlist-component {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
-  top: -100px;
+  align-content: flex-start;
   height: 770px;
   width: 400px;
   padding: 30px;
@@ -15,6 +18,22 @@
   color: white;
   border-radius: 3rem;
   animation: Opening-Pop-ups 0.2s linear 0s 1 normal forwards;
+  max-height: 770px;
+  overflow: auto;
+}
+
+.wishlist-component > div > img {
+  width: 100px;
+  height: auto;
+  border-radius: 1rem;
+  margin: 0;
+  padding: 0.5rem;
+}
+
+.text {
+  font-size: 11px;
+  margin: 0;
+  text-align: center;
 }
 
 @keyframes Opening-Pop-ups {

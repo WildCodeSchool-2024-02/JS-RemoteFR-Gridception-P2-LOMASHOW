@@ -1,7 +1,7 @@
-import Filter from "../Filter/Filter";
-import Wishlist from "../Wishlist/Wishlist";
 import { useState } from "react";
 import PropTypes from "prop-types";
+import Filter from "../Filter/Filter";
+import Wishlist from "../Wishlist/Wishlist";
 import "./NavBar.css";
 
 function NavBar({ setActiveFiltre, index, setIndex, setPage, likedMovie }) {
@@ -27,7 +27,7 @@ function NavBar({ setActiveFiltre, index, setIndex, setPage, likedMovie }) {
             }}
           >
             {" "}
-            <img src="./src/assets/images/list.png" />
+            <img src="./src/assets/images/list.png" alt="list"/>
           </button>
         </div>
         <div className="filter">

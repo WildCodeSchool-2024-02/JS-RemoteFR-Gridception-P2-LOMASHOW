@@ -31,11 +31,10 @@ function Filter({ setActiveFiltre, setIndex, setPage }) {
     const getFilter = () => {
       axios
         .request(options)
-        .then(function (response) {
+        .then((response) => {
           setListFilter(response.data.genres);
-          console.log(response.data);
         })
-        .catch(function (error) {
+        .catch((error) => {
           console.error(error);
         });
     };
@@ -48,19 +47,19 @@ function Filter({ setActiveFiltre, setIndex, setPage }) {
         <div className="listFilter">
           {listFilter.map((filtre) => {
             return (
-              <p
+              <button
                 className="filtre_description"
-                key={filtre.id}
+                key={filtre}
                 onClick={() => handleClickFilter(filtre.id)}
               >
                 {filtre.name}
-              </p>
+              </button>
             );
           })}
         </div>
       )}
-      <button className="filtre_button" type="button" onClick={handleClick}>
-        <img src="./src/assets/images/sliders.png" />
+      <button role="button" className="filtre_button" type="button" onClick={handleClick}>
+        <img src="./src/assets/images/sliders.png" alt="sliders" />
       </button>
     </div>
   );

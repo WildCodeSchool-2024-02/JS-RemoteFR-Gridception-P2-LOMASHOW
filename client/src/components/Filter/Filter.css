@@ -1,4 +1,7 @@
 .listFilter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   text-align: center;
   top: -384px;
   height: 700px;
@@ -33,7 +36,7 @@
   border-style: none;
 }
 
-.listFilter p {
+.filtre_description {
   display: flex;
   justify-content: center;
   align-items: center;

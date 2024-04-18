@@ -33,7 +33,7 @@ function Like({
 
   return (
     <section className="LikeComponent">
-      <button
+      <button role="button"
         className="likebutton"
         type="button"
         onClick={() => {
@@ -41,16 +41,16 @@ function Like({
           handleClickLike();
         }}
       >
-        <img src="./src/assets/images/love.png" />
+        <img src="./src/assets/images/love.png" alt="favorites"/>
       </button>{" "}
-      <button
+      <button role="button"
         className="dislikebutton"
         type="button"
         onClick={() => {
           handleClickDislike();
         }}
       >
-        <img src="./src/assets/images/broken.png" />
+        <img src="./src/assets/images/broken.png" alt="dislike"/>
       </button>
     </section>
   );
@@ -61,6 +61,7 @@ Like.propTypes = {
   setIndex: PropTypes.func.isRequired,
   setPage: PropTypes.func.isRequired,
   page: PropTypes.number.isRequired,
+  nbFilmFiltre: PropTypes.number.isRequired,
   setLikedMovie: PropTypes.func.isRequired,
   likedMovie: PropTypes.arrayOf(
     PropTypes.shape({

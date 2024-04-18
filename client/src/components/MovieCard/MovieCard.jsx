@@ -50,7 +50,7 @@ function MovieCard({
               film.genre_ids.includes(activeFiltre)
             );
           }
-          if (listFilms.length == 0) {
+          if (listFilms.length === 0) {
             setPage(page + 1);
           }
           setNbFilmFiltre(listFilms.length);
@@ -61,7 +61,7 @@ function MovieCard({
         });
     };
     getMovies();
-  }, [index, page, activeFiltre]);
+  }, [index, page, activeFiltre, setPage]);
 
   return (
     <section className="movie-card-component">
@@ -109,12 +109,31 @@ MovieCard.propTypes = {
           name: PropTypes.string.isRequired,
         }).isRequired
       ),
-    }.isRequired
+    }
   ),
   index: PropTypes.number.isRequired,
   setIndex: PropTypes.func.isRequired,
   setPage: PropTypes.func.isRequired,
   page: PropTypes.number.isRequired,
+  setLikedMovie: PropTypes.func.isRequired,
+  likedMovie: PropTypes.arrayOf(
+    PropTypes.shape({
+      adult: PropTypes.bool.isRequired,
+      backdrop_path: PropTypes.string.isRequired,
+      genre_ids: PropTypes.arrayOf(PropTypes.number).isRequired,
+      id: PropTypes.number.isRequired,
+      original_language: PropTypes.string.isRequired,
+      original_title: PropTypes.string.isRequired,
+      overview: PropTypes.string.isRequired,
+      popularity: PropTypes.number.isRequired,
+      poster_path: PropTypes.string.isRequired,
+      release_date: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      video: PropTypes.bool.isRequired,
+      vote_average: PropTypes.number.isRequired,
+      vote_count: PropTypes.number.isRequired,
+    }).isRequired
+  ).isRequired,
 };
 
 export default MovieCard;

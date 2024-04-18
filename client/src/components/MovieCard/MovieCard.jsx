@@ -47,7 +47,6 @@ function MovieCard({activeFiltre, index, setIndex, page, setPage}) {
       }); 
   }; 
   
-  
     getMovies();
   }, [index, page, activeFiltre]); 
 

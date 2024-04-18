@@ -22,5 +22,4 @@ NavBar.propTypes = {
     setPage: PropTypes.func.isRequired,
   };
 
-
 export default NavBar;

@@ -10,7 +10,6 @@ function App() {
   const [index, setIndex] = useState(0);
   const [page, setPage] = useState(1);
 
-
   return (
     <>
       <header>

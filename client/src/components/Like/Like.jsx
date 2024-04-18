@@ -34,7 +34,7 @@ function Like({
   return (
     <section className="LikeComponent">
       <button
-        role="button"
+        role="like"
         className="likebutton"
         type="button"
         onClick={() => {
@@ -45,7 +45,7 @@ function Like({
         <img src="./src/assets/images/love.png" alt="favorites" />
       </button>{" "}
       <button
-        role="button"
+        role="dislike"
         className="dislikebutton"
         type="button"
         onClick={() => {

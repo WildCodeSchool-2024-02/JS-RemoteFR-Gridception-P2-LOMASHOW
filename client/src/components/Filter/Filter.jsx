@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "./Filter.css";
 
-function Filter({ setActiveFiltre, setIndex, setPage }) {
+function Filter({ setActiveFiltre, setIndex, setPage}) {
   const [listFilter, setListFilter] = useState([]);
   const [showModal, setShowModal] = useState(false);
 

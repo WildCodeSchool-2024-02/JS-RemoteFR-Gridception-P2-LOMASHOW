@@ -2,7 +2,8 @@ import PropTypes from "prop-types";
 
 import "./Wishlist.css";
 
-function Wishlist({ likedMovie }) {
+function Wishlist({ likedMovie, setIsWishlistOpen, isWishlistOpen }) {
+  
   return (
     <section className="wishlist">
       <section className="wishlist-component">
@@ -15,6 +16,7 @@ function Wishlist({ likedMovie }) {
           </div>
         ))}
       </section>
+      
     </section>
   );
 }

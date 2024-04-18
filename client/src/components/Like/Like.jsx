@@ -9,20 +9,21 @@ function Like({
   datas,
   likedMovie,
   setLikedMovie,
+  nbFilmFiltre,
 }) {
   const handleClickLike = () => {
     const updatedLikedMovie = [datas, ...likedMovie];
     setLikedMovie(updatedLikedMovie);
 
-    if (index >= 19) {
+    if (index>= nbFilmFiltre - 1) {
       setPage(page + 1);
       setIndex(0);
     } else {
       setIndex(index + 1);
     }
   };
-  const handleClickDislike = () => {
-    if (index >= 19) {
+ const handleClickDislike = () => {
+    if (index >= nbFilmFiltre - 1) {
       setPage(page + 1);
       setIndex(0);
     } else {
@@ -32,23 +33,20 @@ function Like({
 
   return (
     <section className="LikeComponent">
-      <button
+      <button className="likebutton"
         type="button"
         onClick={() => {
           console.info(likedMovie);
           handleClickLike();
         }}
       >
-        Like
+        <img src="./src/assets/images/love.png" />
       </button>{" "}
-      <button
+      <button className="dislikebutton"
         type="button"
-        onClick={() => {
-          console.info(likedMovie);
-          handleClickDislike();
-        }}
+        onClick={()=> {handleClickDislike()}}
       >
-        Dislike
+        <img src="./src/assets/images/broken.png" />
       </button>
     </section>
   );

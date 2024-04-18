@@ -5,9 +5,11 @@ import NavBar from "./components/NavBar/NavBar";
 import { useState } from "react";
 
 function App() {
-  const [activeFiltre, setActiveFiltre] = useState("");
+  const [activeFiltre, setActiveFiltre] = useState(null);
   const [index, setIndex] = useState(0);
   const [page, setPage] = useState(1);
+    const [likedMovie, setLikedMovie] = useState([]);
+   
 
   return (
     <>
@@ -21,6 +23,8 @@ function App() {
           setIndex={setIndex}
           setPage={setPage}
           page={page}
+          likedMovie={likedMovie}
+          setLikedMovie={setLikedMovie}
         />
       </div>
       <NavBar
@@ -29,6 +33,7 @@ function App() {
         index={index}
         setIndex={setIndex}
         setPage={setPage}
+        likedMovie={likedMovie}
       />
     </>
   );

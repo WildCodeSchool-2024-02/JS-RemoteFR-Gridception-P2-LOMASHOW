@@ -1,17 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import ButtonChange from "../ButtonChange/ButtonChange";
-import Wishlist from "../Wishlist/Wishlist";
+// import Wishlist from "../Wishlist/Wishlist";
 import Like from "../Like/Like";
 
 import "./MovieCard.css";
 
-function MovieCard({ activeFiltre, index, setIndex, page, setPage }) {
-  const [datas, setDatas] = useState();
+function MovieCard({ activeFiltre, index, setIndex, page, setPage, likedMovie, setLikedMovie }) {
+  const [datas, setDatas] = useState({});
   const [nbFilmFiltre, setNbFilmFiltre] = useState();
-  const [isWishlistOpen, setIsWishlistOpen] = useState(false);
-  const [likedMovie, setLikedMovie] = useState([]);
+
+  const [toggleOverview , setToggleOverview] = useState (false)
+
 
   const description = () => {
     if (!datas?.overview) {
@@ -19,6 +19,12 @@ function MovieCard({ activeFiltre, index, setIndex, page, setPage }) {
     }
     return datas?.overview;
   };
+
+  function toggle() {
+    if (toggleOverview === false) {
+      setToggleOverview(true);
+    } else setToggleOverview(false);
+  } 
 
   useEffect(() => {
     const options = {
@@ -35,7 +41,7 @@ function MovieCard({ activeFiltre, index, setIndex, page, setPage }) {
         .request(options)
         .then((response) => {
           let listFilms = response.data.results;
-          if (activeFiltre !== "") {
+          if (activeFiltre !== null) {
             listFilms = listFilms.filter((film) =>
               film.genre_ids.includes(activeFiltre)
             );
@@ -56,15 +62,29 @@ function MovieCard({ activeFiltre, index, setIndex, page, setPage }) {
 
   return (
     <section className="movie-card-component">
-      <div className="details"></div>
+      
       <img
         className="movie-card-img"
         src={`https://image.tmdb.org/t/p/w500/${datas?.poster_path}`}
         alt={datas?.vote_average}
       />
 
-      <h2 className="title">{datas?.title}</h2>
 
+      <section
+        className={`overview-container ${toggleOverview ? "active" : ""}`}
+        onClick={toggle}
+        onKeyDown={toggle}
+        role="button"
+        tabIndex={0}
+      >
+        <h2 className="title">{datas?.title}</h2>
+        <p className="notes"> note : {datas?.vote_average} /10</p>
+
+        <div>
+          <p className="overview"> {description()}</p>
+        </div>
+      </section>
+      
       <Like
         setIndex={setIndex}
         index={index}
@@ -73,40 +93,8 @@ function MovieCard({ activeFiltre, index, setIndex, page, setPage }) {
         datas={datas}
         likedMovie={likedMovie}
         setLikedMovie={setLikedMovie}
+        nbFilmFiltre={nbFilmFiltre}
       />
-
-      <div className="overview-container">
-        <p className="overview"> {description()}</p>
-      </div>
-
-      <nav className=" navbar">
-        <div className="wishlist">
-          <button
-            type="button"
-            onClick={() => {
-              setIsWishlistOpen(true);
-              if (isWishlistOpen === true) {
-                setIsWishlistOpen(false);
-              }
-            }}
-          >
-            {" "}
-            Wishlist
-          </button>
-          {isWishlistOpen && <Wishlist likedMovie={likedMovie} />}
-        </div>
-      </nav>
-
-      <div className="button">
-        <ButtonChange
-          setIndex={setIndex}
-          index={index}
-          page={page}
-          setPage={setPage}
-          nbFilmFiltre={nbFilmFiltre}
-          setNbFilmFiltre={setNbFilmFiltre}
-        />
-      </div>
     </section>
   );
 }

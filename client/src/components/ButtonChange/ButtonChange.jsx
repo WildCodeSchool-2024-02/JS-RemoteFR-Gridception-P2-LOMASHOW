@@ -3,10 +3,8 @@ import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 
 function ButtonChange({ setIndex, index, page, setPage, nbFilmFiltre }) {
-
-
   const handleClickSuivant = () => {
-    if (index >= nbFilmFiltre - 1 ) {
+    if (index >= nbFilmFiltre - 1) {
       setPage(page + 1);
       setIndex(0);
     } else {

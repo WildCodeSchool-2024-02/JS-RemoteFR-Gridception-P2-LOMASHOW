@@ -1,14 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import ButtonChange from "../ButtonChange/ButtonChange";
 import Wishlist from "../Wishlist/Wishlist";
 import Like from "../Like/Like";
 
 import "./MovieCard.css";
 
-function MovieCard() {
+function MovieCard({activeFiltre, index, setIndex, page, setPage}) {
   const [datas, setDatas] = useState();
-  const [index, setIndex] = useState(0);
-  const [page, setPage] = useState(1);
+  const [nbFilmFiltre, setNbFilmFiltre] = useState();
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   const [likedMovie, setLikedMovie] = useState([]);
 
@@ -17,35 +18,44 @@ function MovieCard() {
       return "Description à venir";
     }
     return datas?.overview;
-  };
+  };  
 
   useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "https://api.themoviedb.org/3/movie/top_rated",
-      params: { language: "fr-FR", page: `${page}` },
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
-      },
-    };
-
-    const getMovies = () => {
-      axios
-        .request(options)
-        .then((response) => {
-          setDatas(response.data.results[index]);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    };
-
+  const options = {
+    method: "GET",
+    url: "https://api.themoviedb.org/3/movie/top_rated",
+    params: { language: "fr-FR", page: `${page}` },
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
+    },
+  };
+  const getMovies = () => {
+    axios
+      .request(options)
+      .then((response) => {
+        let listFilms = response.data.results;
+        if (activeFiltre !== ""){ 
+          listFilms = listFilms.filter(film => film.genre_ids.includes(activeFiltre))
+        }
+        if(listFilms.length == 0){
+          setPage(page +1)
+        }
+        setNbFilmFiltre(listFilms.length)
+        setDatas(listFilms[index]); 
+      })
+      .catch((error) => {
+        console.error(error);
+      }); 
+  }; 
+  
     getMovies();
-  }, [index, page]);
+  }, [index, page, activeFiltre]); 
 
   return (
     <section className="movie-card-component">
+      <div className="details">
+      </div>
       <img
         className="movie-card-img"
         src={`https://image.tmdb.org/t/p/w500/${datas?.poster_path}`}
@@ -53,6 +63,7 @@ function MovieCard() {
       />
 
       <h2 className="title">{datas?.title}</h2>
+
       <Like
         setIndex={setIndex}
         index={index}
@@ -62,6 +73,7 @@ function MovieCard() {
         likedMovie={likedMovie}
         setLikedMovie={setLikedMovie}
       />
+
       <div className="overview-container">
         <p className="overview"> {description()}</p>
       </div>
@@ -83,8 +95,31 @@ function MovieCard() {
           {isWishlistOpen && <Wishlist likedMovie={likedMovie} />}
         </div>
       </nav>
+
+      <div className="button">
+        <ButtonChange
+          setIndex={setIndex}
+          index={index}
+          page={page}
+          setPage={setPage}
+          nbFilmFiltre={nbFilmFiltre}
+          setNbFilmFiltre={setNbFilmFiltre}
+        />
+      </div>
     </section>
   );
 }
+
+MovieCard.propTypes = {
+  activeFiltre: PropTypes.arrayOf(
+    PropTypes.shape({
+      genre_ids: PropTypes.arrayOf(PropTypes.number).isRequired,
+      id: PropTypes.number.isRequired,
+    }).isRequired),
+  index: PropTypes.number.isRequired,
+  setIndex: PropTypes.func.isRequired,
+  setPage: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired, 
+};
 
 export default MovieCard;

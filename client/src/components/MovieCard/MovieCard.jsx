@@ -111,11 +111,12 @@ function MovieCard({activeFiltre, index, setIndex, page, setPage}) {
 }
 
 MovieCard.propTypes = {
-  activeFiltre: PropTypes.arrayOf(
-    PropTypes.shape({
-      genre_ids: PropTypes.arrayOf(PropTypes.number).isRequired,
+  activeFiltre: PropTypes.shape({
+    genres: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number.isRequired,
-    }).isRequired),
+      name: PropTypes.string.isRequired,
+    }).isRequired)
+  }.isRequired),
   index: PropTypes.number.isRequired,
   setIndex: PropTypes.func.isRequired,
   setPage: PropTypes.func.isRequired,

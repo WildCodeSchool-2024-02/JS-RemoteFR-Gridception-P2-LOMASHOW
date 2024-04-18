@@ -34,6 +34,7 @@ function Filter ({setActiveFiltre, setIndex, setPage}) {
             .request(options)
             .then(function (response) {
               setListFilter(response.data.genres)
+              console.log(response.data)
             })
             .catch(function (error) {
               console.error(error);

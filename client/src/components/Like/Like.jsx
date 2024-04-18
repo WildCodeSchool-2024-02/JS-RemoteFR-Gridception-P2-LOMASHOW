@@ -33,7 +33,8 @@ function Like({
 
   return (
     <section className="LikeComponent">
-      <button role="button"
+      <button
+        role="button"
         className="likebutton"
         type="button"
         onClick={() => {
@@ -41,16 +42,17 @@ function Like({
           handleClickLike();
         }}
       >
-        <img src="./src/assets/images/love.png" alt="favorites"/>
+        <img src="./src/assets/images/love.png" alt="favorites" />
       </button>{" "}
-      <button role="button"
+      <button
+        role="button"
         className="dislikebutton"
         type="button"
         onClick={() => {
           handleClickDislike();
         }}
       >
-        <img src="./src/assets/images/broken.png" alt="dislike"/>
+        <img src="./src/assets/images/broken.png" alt="dislike" />
       </button>
     </section>
   );

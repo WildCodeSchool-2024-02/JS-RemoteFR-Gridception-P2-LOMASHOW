@@ -27,7 +27,7 @@ function NavBar({ setActiveFiltre, index, setIndex, setPage, likedMovie }) {
             }}
           >
             {" "}
-            <img src="./src/assets/images/list.png" alt="list"/>
+            <img src="./src/assets/images/list.png" alt="list" />
           </button>
         </div>
         <div className="filter">

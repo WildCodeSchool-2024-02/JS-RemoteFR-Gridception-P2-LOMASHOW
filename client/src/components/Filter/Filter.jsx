@@ -58,7 +58,12 @@ function Filter({ setActiveFiltre, setIndex, setPage }) {
           })}
         </div>
       )}
-      <button role="button" className="filtre_button" type="button" onClick={handleClick}>
+      <button
+        role="button"
+        className="filtre_button"
+        type="button"
+        onClick={handleClick}
+      >
         <img src="./src/assets/images/sliders.png" alt="sliders" />
       </button>
     </div>

@@ -2,35 +2,42 @@ import PropTypes from "prop-types";
 
 import "./Wishlist.css";
 
-function Wishlist({ closeWishlist }) {
+function Wishlist({ likedMovie }) {
   return (
     <section className="wishlist">
       <section className="wishlist-component">
-        <img src="" alt="" />
-        <p>
-          {" "}
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. A, magni
-          dicta! A corporis optio iste cupiditate recusandae assumenda quas
-          libero minima soluta veritatis animi saepe molestiae illum numquam
-          quasi autem deserunt quo amet fugit mollitia, reprehenderit ea. Animi
-          corrupti aut molestias voluptatibus error ab, pariatur, aspernatur
-          necessitatibus totam iusto dolorum.
-        </p>
-        <button
-          type="button"
-          onClick={() => {
-            closeWishlist(false);
-          }}
-        >
-          X
-        </button>
+        {likedMovie.map((movie) => (
+          <div key={movie.title}>
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt={movie.title}
+            />
+          </div>
+        ))}
       </section>
     </section>
   );
 }
 
 Wishlist.propTypes = {
-  closeWishlist: PropTypes.func.isRequired,
+  likedMovie: PropTypes.arrayOf(
+    PropTypes.shape({
+      adult: PropTypes.bool.isRequired,
+      backdrop_path: PropTypes.string.isRequired,
+      genre_ids: PropTypes.arrayOf(PropTypes.number).isRequired,
+      id: PropTypes.number.isRequired,
+      original_language: PropTypes.string.isRequired,
+      original_title: PropTypes.string.isRequired,
+      overview: PropTypes.string.isRequired,
+      popularity: PropTypes.number.isRequired,
+      poster_path: PropTypes.string.isRequired,
+      release_date: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      video: PropTypes.bool.isRequired,
+      vote_average: PropTypes.number.isRequired,
+      vote_count: PropTypes.number.isRequired,
+    }).isRequired
+  ).isRequired,
 };
 
 export default Wishlist;

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import ButtonChange from "../ButtonChange/ButtonChange";
 import Wishlist from "../Wishlist/Wishlist";
+import Like from "../Like/Like";
 
 import "./MovieCard.css";
 
@@ -10,6 +11,7 @@ function MovieCard({activeFiltre, index, setIndex, page, setPage}) {
   const [datas, setDatas] = useState();
   const [nbFilmFiltre, setNbFilmFiltre] = useState();
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
+  const [likedMovie, setLikedMovie] = useState([]);
 
   const description = () => {
     if (!datas?.overview) {
@@ -61,7 +63,17 @@ function MovieCard({activeFiltre, index, setIndex, page, setPage}) {
       />
 
       <h2 className="title">{datas?.title}</h2>
-  
+
+      <Like
+        setIndex={setIndex}
+        index={index}
+        page={page}
+        setPage={setPage}
+        datas={datas}
+        likedMovie={likedMovie}
+        setLikedMovie={setLikedMovie}
+      />
+
       <div className="overview-container">
         <p className="overview"> {description()}</p>
       </div>
@@ -72,14 +84,18 @@ function MovieCard({activeFiltre, index, setIndex, page, setPage}) {
             type="button"
             onClick={() => {
               setIsWishlistOpen(true);
+              if (isWishlistOpen === true) {
+                setIsWishlistOpen(false);
+              }
             }}
           >
             {" "}
-            Open
+            Wishlist
           </button>
-          {isWishlistOpen && <Wishlist closeWishlist={setIsWishlistOpen} />}
+          {isWishlistOpen && <Wishlist likedMovie={likedMovie} />}
         </div>
       </nav>
+
       <div className="button">
         <ButtonChange
           setIndex={setIndex}
@@ -88,7 +104,6 @@ function MovieCard({activeFiltre, index, setIndex, page, setPage}) {
           setPage={setPage}
           nbFilmFiltre={nbFilmFiltre}
           setNbFilmFiltre={setNbFilmFiltre}
-
         />
       </div>
     </section>

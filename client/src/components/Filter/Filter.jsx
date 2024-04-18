@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import "./Filter.css";
 
 function Filter ({setActiveFiltre, setIndex, setPage}) {
@@ -58,5 +59,11 @@ function Filter ({setActiveFiltre, setIndex, setPage}) {
         </div>
     )
 }
+
+Filter.propTypes = {
+  setActiveFiltre: PropTypes.func.isRequired,
+  setIndex: PropTypes.func.isRequired,
+  setPage: PropTypes.func.isRequired,
+};
 
   export default Filter;

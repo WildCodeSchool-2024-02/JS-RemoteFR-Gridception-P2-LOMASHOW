@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import ButtonChange from "../ButtonChange/ButtonChange";
 import Wishlist from "../Wishlist/Wishlist";
 
@@ -17,7 +18,7 @@ function MovieCard({activeFiltre, index, setIndex, page, setPage}) {
     return datas?.overview;
   };  
 
-  
+  useEffect(() => {
   const options = {
     method: "GET",
     url: "https://api.themoviedb.org/3/movie/top_rated",
@@ -46,7 +47,7 @@ function MovieCard({activeFiltre, index, setIndex, page, setPage}) {
       }); 
   }; 
   
-  useEffect(() => {
+  
     getMovies();
   }, [index, page, activeFiltre]); 
 
@@ -94,5 +95,17 @@ function MovieCard({activeFiltre, index, setIndex, page, setPage}) {
     </section>
   );
 }
+
+MovieCard.propTypes = {
+  activeFiltre: PropTypes.arrayOf(
+    PropTypes.shape({
+      genre_ids: PropTypes.arrayOf(PropTypes.number).isRequired,
+      id: PropTypes.number.isRequired,
+    }).isRequired),
+  index: PropTypes.number.isRequired,
+  setIndex: PropTypes.func.isRequired,
+  setPage: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired, 
+};
 
 export default MovieCard;

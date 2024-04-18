@@ -1,6 +1,6 @@
 .movie-card-component {
   display: flex;
-  position : relative;
+  position: relative;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -17,8 +17,8 @@
 .overview-container {
   position: absolute;
   bottom: 3rem;
-  left:3px;
-  right : 0;
+  left: 3px;
+  right: 0;
   background-color: #27282c;
   max-height: 549px;
   overflow: hidden;

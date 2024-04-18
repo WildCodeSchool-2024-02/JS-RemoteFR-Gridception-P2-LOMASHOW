@@ -8,8 +8,7 @@ function App() {
   const [activeFiltre, setActiveFiltre] = useState(null);
   const [index, setIndex] = useState(0);
   const [page, setPage] = useState(1);
-    const [likedMovie, setLikedMovie] = useState([]);
-   
+  const [likedMovie, setLikedMovie] = useState([]);
 
   return (
     <>

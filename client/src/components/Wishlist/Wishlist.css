@@ -1,6 +1,7 @@
 .wishlist {
   display: flex;
 }
+
 .wishlist-component {
   display: flex;
   flex-wrap: wrap;

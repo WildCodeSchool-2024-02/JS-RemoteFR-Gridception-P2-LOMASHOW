@@ -1,17 +1,21 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-// import Wishlist from "../Wishlist/Wishlist";
 import Like from "../Like/Like";
-
 import "./MovieCard.css";
 
-function MovieCard({ activeFiltre, index, setIndex, page, setPage, likedMovie, setLikedMovie }) {
+function MovieCard({
+  activeFiltre,
+  index,
+  setIndex,
+  page,
+  setPage,
+  likedMovie,
+  setLikedMovie,
+}) {
   const [datas, setDatas] = useState({});
   const [nbFilmFiltre, setNbFilmFiltre] = useState();
-
-  const [toggleOverview , setToggleOverview] = useState (false)
-
+  const [toggleOverview, setToggleOverview] = useState(false);
 
   const description = () => {
     if (!datas?.overview) {
@@ -24,7 +28,7 @@ function MovieCard({ activeFiltre, index, setIndex, page, setPage, likedMovie, s
     if (toggleOverview === false) {
       setToggleOverview(true);
     } else setToggleOverview(false);
-  } 
+  }
 
   useEffect(() => {
     const options = {
@@ -56,19 +60,16 @@ function MovieCard({ activeFiltre, index, setIndex, page, setPage, likedMovie, s
           console.error(error);
         });
     };
-
     getMovies();
   }, [index, page, activeFiltre]);
 
   return (
     <section className="movie-card-component">
-      
       <img
         className="movie-card-img"
         src={`https://image.tmdb.org/t/p/w500/${datas?.poster_path}`}
         alt={datas?.vote_average}
       />
-
 
       <section
         className={`overview-container ${toggleOverview ? "active" : ""}`}
@@ -84,7 +85,7 @@ function MovieCard({ activeFiltre, index, setIndex, page, setPage, likedMovie, s
           <p className="overview"> {description()}</p>
         </div>
       </section>
-      
+
       <Like
         setIndex={setIndex}
         index={index}

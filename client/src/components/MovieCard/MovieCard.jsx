@@ -6,7 +6,7 @@ import Like from "../Like/Like";
 import "./MovieCard.css";
 
 function MovieCard() {
-  const [datas, setDatas] = useState();
+  const [datas, setDatas] = useState({});
   const [index, setIndex] = useState(0);
   const [page, setPage] = useState(1);
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
@@ -70,6 +70,7 @@ function MovieCard() {
         <div className="wishlist">
           <button
             type="button"
+            className="open-close"
             onClick={() => {
               setIsWishlistOpen(true);
               if (isWishlistOpen === true) {

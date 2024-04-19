@@ -45,9 +45,8 @@ function Filter({ setActiveFiltre, setIndex, setPage }) {
     <div>
       {showModal && (
         <div className="listFilter">
-          {listFilter.map((filtre) => {
-            return (
-              <button
+          {listFilter.map((filtre) => (
+            <button
               type="button"
               className="filtre_description"
               key={filtre.id}
@@ -55,15 +54,14 @@ function Filter({ setActiveFiltre, setIndex, setPage }) {
             >
               {filtre.name}
             </button>
-            )
-          })}
+          ))}
         </div>
       )}
       <button
-        role="navigation"
         className="filtre_button"
         type="button"
         onClick={handleClick}
+        onKeyDown={() => {}}
       >
         <img src="./src/assets/images/sliders.png" alt="sliders" />
       </button>

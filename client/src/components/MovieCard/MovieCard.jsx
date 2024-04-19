@@ -5,7 +5,7 @@ import Like from "../Like/Like";
 import "./MovieCard.css";
 
 function MovieCard({
-  activeFiltre,
+  activeFiltre = {},
   index,
   setIndex,
   page,
@@ -71,20 +71,17 @@ function MovieCard({
         alt={datas?.vote_average}
       />
 
-      <section
+      <button
         className={`overview-container ${toggleOverview ? "active" : ""}`}
         onClick={toggle}
         onKeyDown={toggle}
-        role="button"
         tabIndex={0}
+        type="button"
       >
         <h2 className="title">{datas?.title}</h2>
         <p className="notes"> note : {datas?.vote_average} /10</p>
-
-        <div>
-          <p className="overview"> {description()}</p>
-        </div>
-      </section>
+        <p className="overview"> {description()}</p>
+      </button>
 
       <Like
         setIndex={setIndex}
@@ -101,17 +98,18 @@ function MovieCard({
 }
 
 MovieCard.defaultProps = {
+  activeFiltre: {},
+};
+
+MovieCard.propTypes = {
   activeFiltre: PropTypes.shape({
     genres: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number,
-        name: PropTypes.string
+        name: PropTypes.string,
       })
     ),
   }),
-};
-
-MovieCard.propTypes = {
   index: PropTypes.number.isRequired,
   setIndex: PropTypes.func.isRequired,
   setPage: PropTypes.func.isRequired,

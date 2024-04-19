@@ -34,23 +34,17 @@ function Like({
   return (
     <section className="LikeComponent">
       <button
-        role="alert"
         className="likebutton"
         type="button"
-        onClick={() => {
-          console.info(likedMovie);
-          handleClickLike();
-        }}
+        onClick={() => handleClickLike()}
       >
         <img src="./src/assets/images/love.png" alt="favorites" />
-      </button>{" "}
+      </button>
+
       <button
-        role="alert"
         className="dislikebutton"
         type="button"
-        onClick={() => {
-          handleClickDislike();
-        }}
+        onClick={() => handleClickDislike()}
       >
         <img src="./src/assets/images/broken.png" alt="dislike" />
       </button>

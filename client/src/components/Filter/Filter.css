@@ -19,6 +19,12 @@
   overflow: auto;
 }
 
+.filter {
+  align-items: center;
+  align-content: center;
+  background-color: #212121;
+}
+
 @keyframes Opening-Pop-ups {
   0% {
     opacity: 0;
@@ -32,7 +38,7 @@
 }
 
 .filtre_button {
-  background-color: #27282c;
+  background-color: #212121;
   border-style: none;
 }
 

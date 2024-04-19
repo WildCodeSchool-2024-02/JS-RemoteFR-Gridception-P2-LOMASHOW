@@ -23,18 +23,30 @@
   overflow: auto;
 }
 
+.wishlist-component > div {
+  display: flex;
+  flex-direction: column;
+  background-color: #212121d4;
+}
+
 .wishlist-component > div > img {
   width: 100px;
   height: auto;
   border-radius: 1rem;
   margin: 0;
   padding: 0.5rem;
+  background-color: #212121d4;
 }
 
-.text {
-  font-size: 11px;
+.wishlist-component > div > .remove {
   margin: 0;
-  text-align: center;
+  width: 20px;
+  height: auto;
+  position: relative;
+  left: 5em;
+  bottom: 10em;
+  background-color: #212121d4;
+  border-radius: 7px;
 }
 
 @keyframes Opening-Pop-ups {

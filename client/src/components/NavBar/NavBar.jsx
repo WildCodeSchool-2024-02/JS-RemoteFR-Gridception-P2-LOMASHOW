@@ -8,7 +8,6 @@ function NavBar({ setActiveFiltre, index, setIndex, setPage, likedMovie }) {
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   return (
     <nav className="navbar_container">
-      <div className="nav">
         <div className="wishlist">
           {isWishlistOpen && (
             <Wishlist
@@ -27,7 +26,11 @@ function NavBar({ setActiveFiltre, index, setIndex, setPage, likedMovie }) {
             }}
           >
             {" "}
-            <img src="./src/assets/images/list.png" alt="list" />
+            <img
+              className="navbar-image"
+              src="./src/assets/images/list.png"
+              alt="list"
+            />
           </button>
         </div>
         <div className="filter">
@@ -38,7 +41,6 @@ function NavBar({ setActiveFiltre, index, setIndex, setPage, likedMovie }) {
             setPage={setPage}
           />
         </div>
-      </div>
     </nav>
   );
 }

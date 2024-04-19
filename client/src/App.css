@@ -1,9 +1,10 @@
 * {
   box-sizing: border-box;
+  background-color: #27282c;
 }
 
 body {
-  background-color: #27282c;
+  background-color: white;
   font-family: "Montserrat";
   color: white;
   margin: 0;

@@ -7,48 +7,46 @@
 }
 
 .movie-card-img {
-  width: 85vw;
+  width: 90vw;
   height: auto;
-  border-radius: 10%;
+  border-radius: 15px;
 }
 
 /* Modal Overview */
 
 .overview-container {
   position: absolute;
-  bottom: 3rem;
-  left: 3px;
+  bottom: 7rem;
+  left: -8px;
   right: 0;
-  background-color: #27282c;
-  max-height: 549px;
+  max-height: 583px;
+  background-color: #3e3f46;
+  color: white;
   overflow: hidden;
-  height: 18vh;
-  width: 85vw;
-  border-radius: 2rem;
+  height: 16vh;
+  width: 90.1vw;
+  border-radius: 15px;
   margin: 1rem 1.83rem;
   opacity: 90%;
 }
 
 .overview-container.active {
-  height: 72vh;
-}
-
-.title {
-  font-size: 0.9rem;
-  text-align: center;
-  margin: 0.5rem;
+  height: 69vh;
+  border-radius: 15px;
 }
 
 .notes {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   text-align: center;
   margin: 0;
+  background-color: #3e3f46;
 }
 
 .overview {
   font-size: 0.8rem;
   margin: 0.5rem 1rem 0 1rem;
   text-overflow: ellipsis;
+  background-color: #3e3f46;
 }
 
 .button {
@@ -59,4 +57,5 @@
   font-size: 1.2rem;
   text-align: center;
   margin: 1rem 0.5rem 0 0.5rem;
+  background-color: #3e3f46;
 }

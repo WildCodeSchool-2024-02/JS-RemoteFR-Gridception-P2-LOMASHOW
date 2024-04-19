@@ -9,5 +9,8 @@
   img {
     width: 60px;
     margin: 0 3rem;
+    background-color: white;
+    padding: 7px;
+    border-radius: 50%;
   }
 }

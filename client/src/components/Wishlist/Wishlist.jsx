@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-
 import "./Wishlist.css";
 
 function Wishlist({ likedMovie }) {

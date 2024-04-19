@@ -1,19 +1,22 @@
-.listFilter{
-    text-align: center;
-    top: -411px;
-    height: 700px;
-    width: 100vw;
-    padding: 10px;
-    box-sizing: border-box;
-    background: #212121d4;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    border-radius: 40px;
-    animation: Opening-Pop-ups 0.2s linear 0s 1 normal forwards;
-    position: absolute;
-    max-height: 100vh;
-    overflow: auto;
+.listFilter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+  top: -384px;
+  height: 700px;
+  width: 90vw;
+  padding: 10px;
+  box-sizing: border-box;
+  background: #212121d4;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  border-radius: 40px;
+  animation: Opening-Pop-ups 0.2s linear 0s 1 normal forwards;
+  position: absolute;
+  max-height: 100vh;
+  overflow: auto;
 }
 
 @keyframes Opening-Pop-ups {
@@ -29,11 +32,11 @@
 }
 
 .filtre_button {
-    background-color: #27282c;
-    border-style: none;
+  background-color: #27282c;
+  border-style: none;
 }
 
-.listFilter p {
+.filtre_description {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,6 +48,3 @@
   height: 30px;
   font-size: larger;
 }
-
-
-

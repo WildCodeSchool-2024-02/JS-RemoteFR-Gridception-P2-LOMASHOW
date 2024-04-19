@@ -1,16 +1,24 @@
 .navbar_container {
-    width: 100vw;
-    justify-content: space-around;
-    position: absolute;
-    padding-bottom: 1rem;
+  display: flex;
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
 }
 .nav {
-    width: 100vw;
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 2rem;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  gap: 50px;
+  bottom: 120px;
 }
 
 .navbar_container img {
-    width: 40px;
+  width: 40px;
+  background-color: #27282c;
+}
+
+button {
+  background-color: #27282c;
+  border-style: none;
 }

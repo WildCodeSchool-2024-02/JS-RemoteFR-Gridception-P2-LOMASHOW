@@ -46,18 +46,21 @@ function Filter({ setActiveFiltre, setIndex, setPage }) {
       {showModal && (
         <div className="listFilter">
           {listFilter.map((filtre) => {
-              <button type="button"
-                className="filtre_description"
-                key={filtre}
-                onClick={() => handleClickFilter(filtre.id)}
-              >
-                {filtre.name}
-              </button>
+            return (
+              <button
+              type="button"
+              className="filtre_description"
+              key={filtre.id}
+              onClick={() => handleClickFilter(filtre.id)}
+            >
+              {filtre.name}
+            </button>
+            )
           })}
         </div>
       )}
       <button
-        role="filter"
+        role="navigation"
         className="filtre_button"
         type="button"
         onClick={handleClick}

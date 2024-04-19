@@ -101,15 +101,15 @@ function MovieCard({
 }
 
 MovieCard.defaultProps = {
- activeFiltre: PropTypes.shape({
+  activeFiltre: PropTypes.shape({
     genres: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-      }).isRequired
+        id: PropTypes.number,
+        name: PropTypes.string
+      })
     ),
   }),
-}
+};
 
 MovieCard.propTypes = {
   index: PropTypes.number.isRequired,

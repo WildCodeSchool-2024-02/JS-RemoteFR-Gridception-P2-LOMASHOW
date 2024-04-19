@@ -9,12 +9,13 @@ function Like({
   datas,
   likedMovie,
   setLikedMovie,
+  nbFilmFiltre,
 }) {
   const handleClickLike = () => {
     const updatedLikedMovie = [datas, ...likedMovie];
     setLikedMovie(updatedLikedMovie);
 
-    if (index >= 19) {
+    if (index >= nbFilmFiltre - 1) {
       setPage(page + 1);
       setIndex(0);
     } else {
@@ -22,7 +23,7 @@ function Like({
     }
   };
   const handleClickDislike = () => {
-    if (index >= 19) {
+    if (index >= nbFilmFiltre - 1) {
       setPage(page + 1);
       setIndex(0);
     } else {
@@ -33,22 +34,19 @@ function Like({
   return (
     <section className="LikeComponent">
       <button
+        className="likebutton"
         type="button"
-        onClick={() => {
-          console.info(likedMovie);
-          handleClickLike();
-        }}
+        onClick={() => handleClickLike()}
       >
-        Like
-      </button>{" "}
+        <img src="./src/assets/images/love.png" alt="favorites" />
+      </button>
+
       <button
+        className="dislikebutton"
         type="button"
-        onClick={() => {
-          console.info(likedMovie);
-          handleClickDislike();
-        }}
+        onClick={() => handleClickDislike()}
       >
-        Dislike
+        <img src="./src/assets/images/broken.png" alt="dislike" />
       </button>
     </section>
   );
@@ -59,6 +57,7 @@ Like.propTypes = {
   setIndex: PropTypes.func.isRequired,
   setPage: PropTypes.func.isRequired,
   page: PropTypes.number.isRequired,
+  nbFilmFiltre: PropTypes.number.isRequired,
   setLikedMovie: PropTypes.func.isRequired,
   likedMovie: PropTypes.arrayOf(
     PropTypes.shape({

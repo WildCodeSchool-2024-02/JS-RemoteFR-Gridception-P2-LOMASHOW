@@ -5,7 +5,7 @@ import Like from "../Like/Like";
 import "./MovieCard.css";
 
 function MovieCard({
-  activeFiltre = {},
+  activeFiltre,
   index,
   setIndex,
   page,
@@ -14,7 +14,7 @@ function MovieCard({
   setLikedMovie,
 }) {
   const [datas, setDatas] = useState({});
-  const [nbFilmFiltre, setNbFilmFiltre] = useState();
+  const [nbFilmFiltre, setNbFilmFiltre] = useState(0);
   const [toggleOverview, setToggleOverview] = useState(false);
 
   const description = () => {
@@ -22,6 +22,20 @@ function MovieCard({
       return "Description à venir";
     }
     return datas?.overview;
+  };
+
+  const posterPath = () => {
+    if (!datas?.poster_path) {
+      return "Poster à venir";
+    }
+    return datas?.poster_path;
+  };
+
+  const note = () => {
+    if (!datas?.vote_average) {
+      return "Note à venir";
+    }
+    return datas?.vote_average;
   };
 
   function toggle() {
@@ -67,7 +81,7 @@ function MovieCard({
     <section className="movie-card-component">
       <img
         className="movie-card-img"
-        src={`https://image.tmdb.org/t/p/w500/${datas?.poster_path}`}
+        src={`https://image.tmdb.org/t/p/w500/${posterPath()}`}
         alt={datas?.vote_average}
       />
 
@@ -79,7 +93,7 @@ function MovieCard({
         type="button"
       >
         <h2 className="title">{datas?.title}</h2>
-        <p className="notes"> note : {datas?.vote_average} /10</p>
+        <p className="notes"> note : {Math.round(note() * 100) / 100} /10</p>
         <p className="overview"> {description()}</p>
       </button>
 

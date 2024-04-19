@@ -1,10 +1,6 @@
 .navbar_container {
-  display: flex;
   width: 100vw;
-  padding-top: 0.5rem;
-}
-.nav {
-  width: 100vw;
+  height: 9vh;
   display: flex;
   justify-content: center;
   position: fixed;

@@ -5,7 +5,7 @@ import Like from "../Like/Like";
 import "./MovieCard.css";
 
 function MovieCard({
-  activeFiltre,
+  activeFiltre = {},
   index,
   setIndex,
   page,

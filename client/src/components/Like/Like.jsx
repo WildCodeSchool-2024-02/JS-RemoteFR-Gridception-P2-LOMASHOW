@@ -34,19 +34,19 @@ function Like({
   return (
     <section className="LikeComponent">
       <button
-        className="likebutton"
-        type="button"
-        onClick={() => handleClickLike()}
-      >
-        <img src="./src/assets/images/love.png" alt="favorites" />
-      </button>
-
-      <button
         className="dislikebutton"
         type="button"
         onClick={() => handleClickDislike()}
       >
         <img src="./src/assets/images/broken.png" alt="dislike" />
+      </button>
+
+      <button
+        className="likebutton"
+        type="button"
+        onClick={() => handleClickLike()}
+      >
+        <img src="./src/assets/images/love.png" alt="favorites" />
       </button>
     </section>
   );
@@ -78,20 +78,20 @@ Like.propTypes = {
     }).isRequired
   ).isRequired,
   datas: PropTypes.shape({
-    adult: PropTypes.bool.isRequired,
-    backdrop_path: PropTypes.string.isRequired,
-    genre_ids: PropTypes.arrayOf(PropTypes.number).isRequired,
-    id: PropTypes.number.isRequired,
-    original_language: PropTypes.string.isRequired,
-    original_title: PropTypes.string.isRequired,
-    overview: PropTypes.string.isRequired,
-    popularity: PropTypes.number.isRequired,
-    poster_path: PropTypes.string.isRequired,
-    release_date: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    video: PropTypes.bool.isRequired,
-    vote_average: PropTypes.number.isRequired,
-    vote_count: PropTypes.number.isRequired,
+    adult: PropTypes.bool,
+    backdrop_path: PropTypes.string,
+    genre_ids: PropTypes.arrayOf(PropTypes.number),
+    id: PropTypes.number,
+    original_language: PropTypes.string,
+    original_title: PropTypes.string,
+    overview: PropTypes.string,
+    popularity: PropTypes.number,
+    poster_path: PropTypes.string,
+    release_date: PropTypes.string,
+    title: PropTypes.string,
+    video: PropTypes.bool,
+    vote_average: PropTypes.number,
+    vote_count: PropTypes.number,
   }).isRequired,
 };
 

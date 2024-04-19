@@ -63,7 +63,11 @@ function Filter({ setActiveFiltre, setIndex, setPage }) {
         onClick={handleClick}
         onKeyDown={() => {}}
       >
-        <img src="./src/assets/images/sliders.png" alt="sliders" />
+        <img
+          className="navbar-image"
+          src="./src/assets/images/sliders.png"
+          alt="sliders"
+        />
       </button>
     </div>
   );

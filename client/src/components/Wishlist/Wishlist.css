@@ -26,6 +26,7 @@
 .wishlist-component > div {
   display: flex;
   flex-direction: column;
+  background-color: #212121d4;
 }
 
 .wishlist-component > div > img {
@@ -34,6 +35,7 @@
   border-radius: 1rem;
   margin: 0;
   padding: 0.5rem;
+  background-color: #212121d4;
 }
 
 .wishlist-component > div > .remove {

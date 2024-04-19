@@ -1,0 +1,8 @@
+.LikeComponent > .likebutton,
+.LikeComponent > .dislikebutton {
+  background-color: #27282c;
+  border-style: none;
+  img {
+    width: 60px;
+  }
+}

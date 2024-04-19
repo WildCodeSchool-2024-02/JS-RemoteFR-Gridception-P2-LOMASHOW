@@ -1,0 +1,50 @@
+.wishlist {
+  display: flex;
+}
+
+.wishlist-component {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  height: 700px;
+  width: 90vw;
+  padding: 30px;
+  box-sizing: border-box;
+  background: #212121d4;
+  position: absolute;
+  top: -384px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  border-radius: 3rem;
+  animation: Opening-Pop-ups 0.2s linear 0s 1 normal forwards;
+  max-height: 100vh;
+  overflow: auto;
+}
+
+.wishlist-component > div > img {
+  width: 100px;
+  height: auto;
+  border-radius: 1rem;
+  margin: 0;
+  padding: 0.5rem;
+}
+
+.text {
+  font-size: 11px;
+  margin: 0;
+  text-align: center;
+}
+
+@keyframes Opening-Pop-ups {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}

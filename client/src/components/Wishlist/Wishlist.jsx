@@ -1,17 +1,25 @@
 import PropTypes from "prop-types";
 import "./Wishlist.css";
 
-function Wishlist({ likedMovie }) {
+function Wishlist({ likedMovie, setLikedMovie }) {
   return (
     <section className="wishlist">
       <section className="wishlist-component">
-        {likedMovie.map((movie) => (
+        {likedMovie.map((movie, index) => (
           <div key={movie.title}>
             <img
               src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
               alt={movie.title}
             />
-            <button type="button" className="remove">
+            <button
+              type="button"
+              className="remove"
+              onClick={() => {
+                const updatedLikeMovie = [...likedMovie];
+                updatedLikeMovie.splice(index, 1);
+                setLikedMovie(updatedLikeMovie);
+              }}
+            >
               x
             </button>
           </div>
@@ -22,6 +30,7 @@ function Wishlist({ likedMovie }) {
 }
 
 Wishlist.propTypes = {
+  setLikedMovie: PropTypes.func.isRequired,
   likedMovie: PropTypes.arrayOf(
     PropTypes.shape({
       adult: PropTypes.bool.isRequired,

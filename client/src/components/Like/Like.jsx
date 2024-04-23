@@ -12,8 +12,14 @@ function Like({
   nbFilmFiltre,
 }) {
   const handleClickLike = () => {
-    const updatedLikedMovie = [datas, ...likedMovie];
-    setLikedMovie(updatedLikedMovie);
+    const isAlreadyLiked = likedMovie.find(
+      (movie) => movie.title === datas.title
+    );
+
+    if (!isAlreadyLiked) {
+      const updatedLikedMovie = [datas, ...likedMovie];
+      setLikedMovie(updatedLikedMovie);
+    }
 
     if (index >= nbFilmFiltre - 1) {
       setPage(page + 1);

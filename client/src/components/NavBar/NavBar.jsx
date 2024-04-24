@@ -1,17 +1,20 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+
 import Filter from "../Filter/Filter";
 import Wishlist from "../Wishlist/Wishlist";
 import "./NavBar.css";
 
-function NavBar({ 
-  setActiveFiltre, 
-  activeFiltre = {}, 
-  index, 
-  setIndex, 
-  setPage, 
-  likedMovie 
-})   {
+function NavBar({
+  setActiveFiltre,
+  activeFiltre,
+  index,
+  setIndex,
+  setPage,
+  likedMovie,
+  setLikedMovie,
+}) {
+  
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   return (
     <nav className="navbar_container">
@@ -19,6 +22,7 @@ function NavBar({
           {isWishlistOpen && (
             <Wishlist
               likedMovie={likedMovie}
+              setLikedMovie={setLikedMovie}
               isWishlistOpen={isWishlistOpen}
               setIsWishlistOpen={setIsWishlistOpen}
             />
@@ -64,6 +68,7 @@ NavBar.propTypes = {
   index: PropTypes.number.isRequired,
   setIndex: PropTypes.func.isRequired,
   setPage: PropTypes.func.isRequired,
+  setLikedMovie: PropTypes.func.isRequired,
   likedMovie: PropTypes.arrayOf(
     PropTypes.shape({
       adult: PropTypes.bool.isRequired,

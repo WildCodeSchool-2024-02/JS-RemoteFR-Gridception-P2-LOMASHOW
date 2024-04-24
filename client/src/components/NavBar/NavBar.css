@@ -6,6 +6,7 @@
   position: fixed;
   gap: 50px;
   background-color: #212121;
+  bottom: 0;
 }
 
 .navbar_container .navbar-image {

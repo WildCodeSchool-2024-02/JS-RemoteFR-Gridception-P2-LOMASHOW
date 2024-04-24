@@ -1,6 +1,8 @@
 import "./Like.css";
 import PropTypes from "prop-types";
 
+import { useEffect } from "react";
+
 function Like({
   index,
   setIndex,
@@ -11,9 +13,20 @@ function Like({
   setLikedMovie,
   nbFilmFiltre,
 }) {
+  const toLocalStorage = (movies) => {
+    localStorage.setItem("likedMovies", JSON.stringify(movies));
+  };
+  useEffect(() => {
+    const storedLikedMovies = localStorage.getItem("likedMovies");
+    if (storedLikedMovies) {
+      setLikedMovie(JSON.parse(storedLikedMovies));
+    }
+  }, [setLikedMovie]);
+
   const handleClickLike = () => {
     const updatedLikedMovie = [datas, ...likedMovie];
     setLikedMovie(updatedLikedMovie);
+    toLocalStorage(updatedLikedMovie);
 
     if (index >= nbFilmFiltre - 1) {
       setPage(page + 1);

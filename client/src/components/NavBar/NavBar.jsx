@@ -7,12 +7,14 @@ import "./NavBar.css";
 
 function NavBar({
   setActiveFiltre,
+  activeFiltre,
   index,
   setIndex,
   setPage,
   likedMovie,
   setLikedMovie,
 }) {
+  
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   return (
     <nav className="navbar_container">
@@ -45,6 +47,7 @@ function NavBar({
         <div className="filter">
           <Filter
             setActiveFiltre={setActiveFiltre}
+            activeFiltre={activeFiltre}
             index={index}
             setIndex={setIndex}
             setPage={setPage}
@@ -54,7 +57,13 @@ function NavBar({
   );
 }
 
+NavBar.defaultProps = {
+  activeFiltre: null,
+};
+
+
 NavBar.propTypes = {
+  activeFiltre: PropTypes.number,
   setActiveFiltre: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
   setIndex: PropTypes.func.isRequired,

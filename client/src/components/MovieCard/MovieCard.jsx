@@ -114,18 +114,11 @@ function MovieCard({
 }
 
 MovieCard.defaultProps = {
-  activeFiltre: {},
+  activeFiltre: null,
 };
 
 MovieCard.propTypes = {
-  activeFiltre: PropTypes.shape({
-    genres: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number,
-        name: PropTypes.string,
-      })
-    ),
-  }),
+  activeFiltre: PropTypes.number,
   index: PropTypes.number.isRequired,
   setIndex: PropTypes.func.isRequired,
   setPage: PropTypes.func.isRequired,

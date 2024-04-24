@@ -7,6 +7,7 @@
   height: 700px;
   width: 90.5vw;
   padding: 10px;
+  padding-top: 40px;
   box-sizing: border-box;
   background: #212121d4;
   left: 50%;
@@ -53,4 +54,9 @@
   border-radius: 10px;
   height: 30px;
   font-size: larger;
+}
+
+.filtre_description.active {
+  background-color: #aaaaa985;
+  color: white;
 }

@@ -1,23 +1,55 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+
 import { Link } from "react-router-dom";
+
+
 import Filter from "../Filter/Filter";
 import Wishlist from "../Wishlist/Wishlist";
 import "./NavBar.css";
 import info from "../../assets/images/info.png";
 
-function NavBar({ setActiveFiltre, index, setIndex, setPage, likedMovie, activeFiltre = {} }) {
+function NavBar({ setActiveFiltre, index, setIndex, setPage, likedMovie, activeFiltre = {}, setLikedMovie }) {
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   return (
     <nav className="navbar_container">
-      <div className="wishlist">
-        {isWishlistOpen && (
-          <Wishlist
-            likedMovie={likedMovie}
-            isWishlistOpen={isWishlistOpen}
-            setIsWishlistOpen={setIsWishlistOpen}
+
+        <div className="wishlist">
+          {isWishlistOpen && (
+            <Wishlist
+              likedMovie={likedMovie}
+              setLikedMovie={setLikedMovie}
+              isWishlistOpen={isWishlistOpen}
+              setIsWishlistOpen={setIsWishlistOpen}
+            />
+          )}
+          <button
+            type="button"
+            onClick={() => {
+              setIsWishlistOpen(true);
+              if (isWishlistOpen === true) {
+                setIsWishlistOpen(false);
+              }
+            }}
+          >
+            {" "}
+            <img
+              className="navbar-image"
+              src="./src/assets/images/list.png"
+              alt="list"
+            />
+          </button>
+        </div>
+        <div className="filter">
+          <Filter
+            setActiveFiltre={setActiveFiltre}
+            activeFiltre={activeFiltre}
+            index={index}
+            setIndex={setIndex}
+            setPage={setPage}
+
           />
-        )}
+        
         <button
           type="button"
           onClick={() => {
@@ -59,6 +91,7 @@ NavBar.propTypes = {
   index: PropTypes.number.isRequired,
   setIndex: PropTypes.func.isRequired,
   setPage: PropTypes.func.isRequired,
+  setLikedMovie: PropTypes.func.isRequired,
   likedMovie: PropTypes.arrayOf(
     PropTypes.shape({
       adult: PropTypes.bool.isRequired,

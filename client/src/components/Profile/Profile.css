@@ -20,6 +20,7 @@
 }
 .profile-input {
   color: white;
+  border-radius: 5px;
 }
 label {
   margin: 0.5rem;
@@ -39,7 +40,7 @@ label {
 }
 
 .profile-button {
-  background-color: aliceblue;
+  background-color: white;
   border-radius: 5px;
   margin-bottom: 0.5rem;
 }

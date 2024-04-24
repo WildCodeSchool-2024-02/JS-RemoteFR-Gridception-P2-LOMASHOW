@@ -1,0 +1,23 @@
+.navbar_container {
+  width: 100vw;
+  height: 9vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  gap: 50px;
+  background-color: #212121;
+}
+
+.navbar_container .navbar-image {
+  width: 30px;
+  background-color: #212121;
+}
+
+button {
+  background-color: #212121;
+  border-style: none;
+}
+
+.info {
+  background-color: #212121;
+}

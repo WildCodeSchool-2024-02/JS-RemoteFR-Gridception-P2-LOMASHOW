@@ -4,8 +4,9 @@ import { useAuth } from "./context/AuthContext";
 
 import MovieCard from "./components/MovieCard/MovieCard";
 import Movinder from "./assets/images/MovInder175.png";
-import NavBar from "./components/NavBar/NavBar";
+
 import Swipeable from "./components/Swipeable/Swipeable";
+import NavBar from "./components/NavBar/NavBar";
 
 import "./App.css";
 

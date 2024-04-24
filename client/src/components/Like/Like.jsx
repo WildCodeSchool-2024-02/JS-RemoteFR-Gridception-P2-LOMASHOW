@@ -58,7 +58,7 @@ function Like({
         type="button"
         onClick={() => handleClickDislike()}
       >
-       <img src="./src/assets/images/broken.png" alt="dislike" />
+        <img src="./src/assets/images/broken.png" alt="dislike" />
       </button>
 
       <button
@@ -66,7 +66,7 @@ function Like({
         type="button"
         onClick={() => handleClickLike()}
       >
-      <img src="./src/assets/images/love.png" alt="favorites" />
+        <img src="./src/assets/images/love.png" alt="favorites" />
       </button>
     </section>
   );

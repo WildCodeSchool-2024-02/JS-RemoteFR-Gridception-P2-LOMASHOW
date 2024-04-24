@@ -1,8 +1,6 @@
 import "./Like.css";
 import PropTypes from "prop-types";
 
-import { useEffect } from "react";
-
 function Like({
   index,
   setIndex,
@@ -13,18 +11,7 @@ function Like({
   setLikedMovie,
   nbFilmFiltre,
 }) {
-  const toLocalStorage = (movies) => {
-    localStorage.setItem("likedMovies", JSON.stringify(movies));
-  };
-  useEffect(() => {
-    const storedLikedMovies = localStorage.getItem("likedMovies");
-    if (storedLikedMovies) {
-      setLikedMovie(JSON.parse(storedLikedMovies));
-    }
-  }, [setLikedMovie]);
-
   const handleClickLike = () => {
-
     const isAlreadyLiked = likedMovie.find(
       (movie) => movie.title === datas.title
     );
@@ -32,7 +19,7 @@ function Like({
     if (!isAlreadyLiked) {
       const updatedLikedMovie = [datas, ...likedMovie];
       setLikedMovie(updatedLikedMovie);
-      toLocalStorage(updatedLikedMovie);
+      localStorage.setItem("likedMovies", JSON.stringify(updatedLikedMovie));
     }
 
     if (index >= nbFilmFiltre - 1) {

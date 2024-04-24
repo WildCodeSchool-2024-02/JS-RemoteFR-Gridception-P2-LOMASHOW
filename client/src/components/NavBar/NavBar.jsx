@@ -6,13 +6,17 @@ import { Link } from "react-router-dom";
 
 import Filter from "../Filter/Filter";
 import Wishlist from "../Wishlist/Wishlist";
+
 import "./NavBar.css";
 import info from "../../assets/images/info.png";
 
 function NavBar({ setActiveFiltre, index, setIndex, setPage, likedMovie, activeFiltre = {}, setLikedMovie }) {
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
+
   return (
     <nav className="navbar_container">
+
+
 
         <div className="wishlist">
           {isWishlistOpen && (

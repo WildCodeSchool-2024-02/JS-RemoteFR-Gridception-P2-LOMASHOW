@@ -18,6 +18,10 @@ function Wishlist({ likedMovie, setLikedMovie }) {
                 const updatedLikeMovie = [...likedMovie];
                 updatedLikeMovie.splice(index, 1);
                 setLikedMovie(updatedLikeMovie);
+                localStorage.setItem(
+                  "likedMovies",
+                  JSON.stringify(updatedLikeMovie)
+                );
               }}
             >
               x

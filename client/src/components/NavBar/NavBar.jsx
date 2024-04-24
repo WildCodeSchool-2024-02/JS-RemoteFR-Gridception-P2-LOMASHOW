@@ -8,6 +8,7 @@ import Wishlist from "../Wishlist/Wishlist";
 
 import "./NavBar.css";
 import info from "../../assets/images/info.png";
+import { useAuth } from "../../context/AuthContext";
 
 function NavBar({
   setActiveFiltre,
@@ -19,6 +20,7 @@ function NavBar({
   setLikedMovie,
 }) {
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
+  const { setAuthenticated } = useAuth();
 
   return (
     <nav className="navbar_container">
@@ -63,6 +65,17 @@ function NavBar({
           <img className="navbar-image" src={info} alt="logo info" />
         </Link>
       </div>
+
+      <button
+        className="logout"
+        type="button"
+        onClick={() => {
+          localStorage.setItem("logged", JSON.stringify(false));
+          setAuthenticated(false);
+        }}
+      >
+        Logout
+      </button>
     </nav>
   );
 }

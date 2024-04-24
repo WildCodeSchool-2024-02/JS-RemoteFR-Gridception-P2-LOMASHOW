@@ -1,0 +1,45 @@
+.profile-component {
+  font-family: "Montserrat";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #3e3f46;
+  margin: 0 auto;
+  width: 50vw;
+  height: auto;
+  border-radius: 15px;
+}
+.profile-component > .password,
+.profile-component > .username {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  background-color: #3e3f46;
+}
+.profile-input {
+  color: white;
+}
+label {
+  margin: 0.5rem;
+  background-color: #3e3f46;
+}
+
+@keyframes Opening-Pop-ups {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.profile-button {
+  background-color: aliceblue;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}

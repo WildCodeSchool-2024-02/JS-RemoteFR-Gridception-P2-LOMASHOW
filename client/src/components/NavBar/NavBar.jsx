@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import Filter from "../Filter/Filter";
 import Wishlist from "../Wishlist/Wishlist";
+
 import "./NavBar.css";
 
 function NavBar({
@@ -14,42 +15,43 @@ function NavBar({
   setLikedMovie,
 }) {
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
+
   return (
     <nav className="navbar_container">
-        <div className="wishlist">
-          {isWishlistOpen && (
-            <Wishlist
-              likedMovie={likedMovie}
-              setLikedMovie={setLikedMovie}
-              isWishlistOpen={isWishlistOpen}
-              setIsWishlistOpen={setIsWishlistOpen}
-            />
-          )}
-          <button
-            type="button"
-            onClick={() => {
-              setIsWishlistOpen(true);
-              if (isWishlistOpen === true) {
-                setIsWishlistOpen(false);
-              }
-            }}
-          >
-            {" "}
-            <img
-              className="navbar-image"
-              src="./src/assets/images/list.png"
-              alt="list"
-            />
-          </button>
-        </div>
-        <div className="filter">
-          <Filter
-            setActiveFiltre={setActiveFiltre}
-            index={index}
-            setIndex={setIndex}
-            setPage={setPage}
+      <div className="wishlist">
+        {isWishlistOpen && (
+          <Wishlist
+            likedMovie={likedMovie}
+            setLikedMovie={setLikedMovie}
+            isWishlistOpen={isWishlistOpen}
+            setIsWishlistOpen={setIsWishlistOpen}
           />
-        </div>
+        )}
+        <button
+          type="button"
+          onClick={() => {
+            setIsWishlistOpen(true);
+            if (isWishlistOpen === true) {
+              setIsWishlistOpen(false);
+            }
+          }}
+        >
+          {" "}
+          <img
+            className="navbar-image"
+            src="./src/assets/images/list.png"
+            alt="list"
+          />
+        </button>
+      </div>
+      <div className="filter">
+        <Filter
+          setActiveFiltre={setActiveFiltre}
+          index={index}
+          setIndex={setIndex}
+          setPage={setPage}
+        />
+      </div>
     </nav>
   );
 }

@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "./context/AuthContext";
+
 import MovieCard from "./components/MovieCard/MovieCard";
 import Movinder from "./assets/images/MovInder175.png";
-import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Swipeable from "./components/Swipeable/Swipeable";
+
+import "./App.css";
 
 function App() {
   const [activeFiltre, setActiveFiltre] = useState(null);
@@ -13,11 +17,21 @@ function App() {
   const [datas, setDatas] = useState({});
   const [nbFilmFiltre, setNbFilmFiltre] = useState(0);
 
+  const navigate = useNavigate();
+  const { authenticated } = useAuth();
+
+  useEffect(() => {
+    if (authenticated === false) {
+      navigate("/");
+    }
+  }, [authenticated]);
+
   return (
     <>
       <header>
         <img src={Movinder} alt="" />
       </header>
+
       <div>
         <Swipeable
           onSwipeLeft={() => {
@@ -39,6 +53,10 @@ function App() {
             if (!isAlreadyLiked) {
               const updatedLikedMovie = [datas, ...likedMovie];
               setLikedMovie(updatedLikedMovie);
+              localStorage.setItem(
+                "likedMovies",
+                JSON.stringify(updatedLikedMovie)
+              );
             }
             if (index >= nbFilmFiltre - 1) {
               setPage(page + 1);

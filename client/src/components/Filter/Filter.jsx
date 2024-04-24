@@ -33,8 +33,11 @@ function Filter({ setActiveFiltre, setIndex, setPage }) {
         .request(options)
         .then((response) => {
           const list = response.data.genres;
-          const newList = list.filter(filtre=>filtre.name!=="Documentaire" && filtre.name!=="Téléfilm");
-          setListFilter(newList)
+          const newList = list.filter(
+            (filtre) =>
+              filtre.name !== "Documentaire" && filtre.name !== "Téléfilm"
+          );
+          setListFilter(newList);
         })
         .catch((error) => {
           console.error(error);

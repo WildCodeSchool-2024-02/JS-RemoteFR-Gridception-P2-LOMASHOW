@@ -24,9 +24,16 @@ function Like({
   }, [setLikedMovie]);
 
   const handleClickLike = () => {
-    const updatedLikedMovie = [datas, ...likedMovie];
-    setLikedMovie(updatedLikedMovie);
-    toLocalStorage(updatedLikedMovie);
+
+    const isAlreadyLiked = likedMovie.find(
+      (movie) => movie.title === datas.title
+    );
+
+    if (!isAlreadyLiked) {
+      const updatedLikedMovie = [datas, ...likedMovie];
+      setLikedMovie(updatedLikedMovie);
+      toLocalStorage(updatedLikedMovie);
+    }
 
     if (index >= nbFilmFiltre - 1) {
       setPage(page + 1);
@@ -51,7 +58,7 @@ function Like({
         type="button"
         onClick={() => handleClickDislike()}
       >
-        <img src="./src/assets/images/broken.png" alt="dislike" />
+       <img src="./src/assets/images/broken.png" alt="dislike" />
       </button>
 
       <button
@@ -59,7 +66,7 @@ function Like({
         type="button"
         onClick={() => handleClickLike()}
       >
-        <img src="./src/assets/images/love.png" alt="favorites" />
+      <img src="./src/assets/images/love.png" alt="favorites" />
       </button>
     </section>
   );

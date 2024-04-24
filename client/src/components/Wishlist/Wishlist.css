@@ -8,16 +8,16 @@
   justify-content: center;
   align-content: flex-start;
   height: 700px;
-  width: 90vw;
+  width: 90.5vw;
   padding: 30px;
   box-sizing: border-box;
   background: #212121d4;
   position: absolute;
-  top: -384px;
+  top: -361px;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  border-radius: 3rem;
+  border-radius: 15px;
   animation: Opening-Pop-ups 0.2s linear 0s 1 normal forwards;
   max-height: 100vh;
   overflow: auto;
@@ -26,7 +26,7 @@
 .wishlist-component > div {
   display: flex;
   flex-direction: column;
-  background-color: #212121d4;
+  background-color: transparent;
 }
 
 .wishlist-component > div > img {
@@ -35,7 +35,7 @@
   border-radius: 1rem;
   margin: 0;
   padding: 0.5rem;
-  background-color: #212121d4;
+  background-color: transparent;
 }
 
 .wishlist-component > div > .remove {

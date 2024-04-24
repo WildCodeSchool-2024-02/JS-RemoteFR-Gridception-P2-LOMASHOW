@@ -5,16 +5,18 @@ import Like from "../Like/Like";
 import "./MovieCard.css";
 
 function MovieCard({
-  activeFiltre,
+  activeFiltre = {},
   index,
   setIndex,
   page,
   setPage,
   likedMovie,
   setLikedMovie,
+  datas,
+  setDatas,
+  nbFilmFiltre,
+  setNbFilmFiltre,
 }) {
-  const [datas, setDatas] = useState({});
-  const [nbFilmFiltre, setNbFilmFiltre] = useState(0);
   const [toggleOverview, setToggleOverview] = useState(false);
 
   const description = () => {
@@ -75,10 +77,10 @@ function MovieCard({
         });
     };
     getMovies();
-  }, [index, page, activeFiltre, setPage]);
+  }, [index, page, activeFiltre, setPage, setNbFilmFiltre, setDatas]);
 
   return (
-    <section className="movie-card-component">
+    <section className="movie-card-component ">
       <img
         className="movie-card-img"
         src={`https://image.tmdb.org/t/p/w500/${posterPath()}`}
@@ -147,6 +149,25 @@ MovieCard.propTypes = {
       vote_count: PropTypes.number.isRequired,
     }).isRequired
   ).isRequired,
+  datas: PropTypes.shape({
+    adult: PropTypes.bool,
+    backdrop_path: PropTypes.string,
+    genre_ids: PropTypes.arrayOf(PropTypes.number),
+    id: PropTypes.number,
+    original_language: PropTypes.string,
+    original_title: PropTypes.string,
+    overview: PropTypes.string,
+    popularity: PropTypes.number,
+    poster_path: PropTypes.string,
+    release_date: PropTypes.string,
+    title: PropTypes.string,
+    video: PropTypes.bool,
+    vote_average: PropTypes.number,
+    vote_count: PropTypes.number,
+  }).isRequired,
+  setDatas: PropTypes.func.isRequired,
+  nbFilmFiltre: PropTypes.number.isRequired,
+  setNbFilmFiltre: PropTypes.func.isRequired,
 };
 
 export default MovieCard;

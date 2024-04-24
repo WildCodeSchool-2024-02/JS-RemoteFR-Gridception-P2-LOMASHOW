@@ -2,14 +2,25 @@
   padding: 2rem;
 }
 
-.LikeComponent > .likebutton,
+.LikeComponent > .likebutton {
+  background-color: #27282c;
+  border-style: none;
+  img {
+    width: 60px;
+    margin: 0 3rem;
+    background-color: rgb(4, 90, 17);
+    padding: 7px;
+    border-radius: 50%;
+  }
+}
+
 .LikeComponent > .dislikebutton {
   background-color: #27282c;
   border-style: none;
   img {
     width: 60px;
     margin: 0 3rem;
-    background-color: white;
+    background-color: rgb(137, 22, 22);
     padding: 7px;
     border-radius: 50%;
   }

@@ -66,10 +66,3 @@
     transform: translateY(0);
   }
 }
-
-@keyframes myAnimReverse {
-  100% {
-    height: initial;
-    transform: translateY(0);
-  }
-}

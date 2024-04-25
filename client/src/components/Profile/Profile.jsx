@@ -24,7 +24,7 @@ function Profile() {
       navigate("/home");
     }
   }, [authenticated]);
-  //   si true vers page home tableau de dépendance authenticated
+
   return (
     <>
       <header>
@@ -32,7 +32,7 @@ function Profile() {
       </header>
       <section className="profile-component">
         <form className="username">
-          <label htmlFor="username">Username: </label>
+          <label htmlFor="username">Username : </label>
           <input
             className="profile-input"
             type="text"
@@ -52,7 +52,6 @@ function Profile() {
             name="password"
             value={password}
             onChange={handlePassword}
-            minLength={8}
             required
           />
         </form>

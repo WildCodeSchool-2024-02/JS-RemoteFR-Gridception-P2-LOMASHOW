@@ -27,18 +27,6 @@ label {
   background-color: #3e3f46;
 }
 
-@keyframes Opening-Pop-ups {
-  0% {
-    opacity: 0;
-    transform: translateX(-50%);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
-}
-
 .profile-button {
   background-color: white;
   border-radius: 5px;

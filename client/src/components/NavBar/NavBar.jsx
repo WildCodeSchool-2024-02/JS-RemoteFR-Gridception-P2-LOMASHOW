@@ -74,7 +74,7 @@ function NavBar({
           setAuthenticated(false);
         }}
       >
-        Logout
+        <img src="./src/assets/images/se-deconnecter.png" alt="Deconnexion" />
       </button>
     </nav>
   );

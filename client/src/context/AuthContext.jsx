@@ -6,8 +6,8 @@ const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [authenticated, setAuthenticated] = useState(false);
   const data = {
-    username: "c",
-    password: "c",
+    username: "lomashow",
+    password: "benoitlegoat",
     likedMovies: "movies",
   };
 

@@ -28,19 +28,19 @@
 
 h1 {
   text-align: center;
-  background: #00000039;
+  background: none;
   border-radius: 20px;
   padding: 1rem;
-  margin: 0 1rem 1rem 1rem;
+  margin: 0;
 }
 
 .content-creators1 {
-  margin: 1rem;
   padding: 0.8rem;
   text-align: center;
-  background: #00000039;
+  background: none;
   border-radius: 20px;
   font-size: 15px;
+  margin: 0 1rem 1rem 1rem;
 }
 
 .content-creators {

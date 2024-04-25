@@ -23,9 +23,13 @@ export default function Creators() {
       <section className="container-picture-creators">
         {infoCreators.map((member) => (
           <div key={member.name}>
-            <img src={member.img} alt={member.name} />
+            <img
+              className="content-picture"
+              src={member.img}
+              alt={member.name}
+            />
             <h2>{member.name}</h2>
-            <p>{member.desc}</p>
+            <p className="content-picture">{member.desc}</p>
           </div>
         ))}
       </section>

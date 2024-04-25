@@ -115,6 +115,7 @@ function MovieCard({
 
 MovieCard.defaultProps = {
   activeFiltre: null,
+  datas: {},
 };
 
 MovieCard.propTypes = {
@@ -157,7 +158,7 @@ MovieCard.propTypes = {
     video: PropTypes.bool,
     vote_average: PropTypes.number,
     vote_count: PropTypes.number,
-  }).isRequired,
+  }),
   setDatas: PropTypes.func.isRequired,
   nbFilmFiltre: PropTypes.number.isRequired,
   setNbFilmFiltre: PropTypes.func.isRequired,

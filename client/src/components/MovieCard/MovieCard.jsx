@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import PropTypes from "prop-types";
 import Like from "../Like/Like";
 import "./MovieCard.css";
@@ -79,13 +80,28 @@ function MovieCard({
     getMovies();
   }, [index, page, activeFiltre, setPage, setNbFilmFiltre, setDatas]);
 
+  const x = useMotionValue(0);
+  const background = useTransform(
+    x,
+    [-100, 0, 100],
+    ["#891616", "#27282c", "#045a11"]
+  );
+
   return (
     <section className="movie-card-component ">
-      <img
-        className="movie-card-img"
-        src={`https://image.tmdb.org/t/p/w500/${posterPath()}`}
-        alt={datas?.vote_average}
-      />
+      <motion.div style={{ background }} className="framer-background">
+        <motion.div
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          style={{ x }}
+        >
+          <img
+            className="movie-card-img"
+            src={`https://image.tmdb.org/t/p/w500/${posterPath()}`}
+            alt={datas?.vote_average}
+          />
+        </motion.div>
+      </motion.div>
 
       <button
         className={`overview-container ${toggleOverview ? "active" : ""}`}

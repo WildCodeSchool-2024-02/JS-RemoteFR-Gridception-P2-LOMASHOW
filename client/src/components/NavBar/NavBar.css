@@ -3,7 +3,7 @@
   height: 9vh;
   display: flex;
   justify-content: center;
-  position: fixed;
+  position: absolute;
   gap: 50px;
   background-color: #212121;
   bottom: 0;

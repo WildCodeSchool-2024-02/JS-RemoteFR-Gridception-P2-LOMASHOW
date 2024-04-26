@@ -3,7 +3,12 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "./Filter.css";
 
-function Filter({ setActiveFiltre, setIndex, setPage }) {
+function Filter({ 
+  activeFiltre = {},
+   setActiveFiltre,
+    setIndex,
+     setPage 
+    }) {
   const [listFilter, setListFilter] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
@@ -32,7 +37,12 @@ function Filter({ setActiveFiltre, setIndex, setPage }) {
       axios
         .request(options)
         .then((response) => {
-          setListFilter(response.data.genres);
+          const list = response.data.genres;
+          const newList = list.filter(
+            (filtre) =>
+              filtre.name !== "Documentaire" && filtre.name !== "Téléfilm"
+          );
+          setListFilter(newList);
         })
         .catch((error) => {
           console.error(error);
@@ -47,8 +57,8 @@ function Filter({ setActiveFiltre, setIndex, setPage }) {
         <div className="listFilter">
           {listFilter.map((filtre) => (
             <button
-              type="button"
-              className="filtre_description"
+              type="button"       
+              className={filtre.id === activeFiltre? "filtre_description active": "filtre_description"}              
               key={filtre.id}
               onClick={() => handleClickFilter(filtre.id)}
             >
@@ -73,7 +83,12 @@ function Filter({ setActiveFiltre, setIndex, setPage }) {
   );
 }
 
+Filter.defaultProps = {
+  activeFiltre: null,
+};
+
 Filter.propTypes = {
+  activeFiltre: PropTypes.number,
   setActiveFiltre: PropTypes.func.isRequired,
   setIndex: PropTypes.func.isRequired,
   setPage: PropTypes.func.isRequired,

@@ -1,0 +1,61 @@
+.movinder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem auto;
+}
+
+.container-picture-creators {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.container-picture-creators img {
+  width: 130px;
+  height: 160px;
+  border-radius: 20px;
+  padding: 2px;
+  text-align: center;
+}
+
+.container-picture-creators h2 {
+  font-size: 20px;
+  text-align: center;
+  margin: 1px 0 1px 0;
+}
+
+h1 {
+  text-align: center;
+  background: none;
+  border-radius: 20px;
+  padding: 1rem;
+  margin: 0;
+}
+
+.content-creators1 {
+  padding: 0.8rem;
+  text-align: center;
+  background: none;
+  border-radius: 20px;
+  font-size: 15px;
+  margin: 0 1rem 1rem 1rem;
+}
+
+.content-creators {
+  margin: 1rem 1rem 0 1rem;
+  padding: 0.8rem;
+  padding-bottom: 0.1rem;
+  text-align: center;
+  background: #00000039;
+  border-radius: 20px;
+}
+
+.content-picture {
+  margin: 0.5rem 1rem 1rem 1rem;
+  padding: 0.5rem;
+  border-radius: 20px;
+  background: #00000039;
+  font-size: 15px;
+}

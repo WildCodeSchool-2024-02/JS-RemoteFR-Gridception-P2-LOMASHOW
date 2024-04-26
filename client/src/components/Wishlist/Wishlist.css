@@ -7,7 +7,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
-  height: 700px;
+  height: 753px;
   width: 90.5vw;
   padding: 30px;
   box-sizing: border-box;
@@ -45,7 +45,7 @@
   position: relative;
   left: 5em;
   bottom: 10em;
-  background-color: #212121d4;
+  background-color: grey;
   border-radius: 7px;
 }
 

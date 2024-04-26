@@ -4,11 +4,16 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  border-radius: 15px;
 }
 
 .movie-card-img {
   width: 90vw;
   height: auto;
+  border-radius: 15px;
+}
+
+.framer-background {
   border-radius: 15px;
 }
 
@@ -19,12 +24,12 @@
   bottom: 7rem;
   left: -8px;
   right: 0;
-  max-height: 583px;
+  max-height: 586px;
   background-color: #3e3f46;
   color: white;
   overflow: hidden;
   height: 16vh;
-  width: 90vw;
+  width: 90.5vw;
   border-radius: 15px;
   margin: 1rem 1.83rem;
   opacity: 90%;

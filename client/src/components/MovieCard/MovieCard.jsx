@@ -1,20 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import PropTypes from "prop-types";
-import Like from "../Like/Like";
+
 import "./MovieCard.css";
 
 function MovieCard({
   activeFiltre = {},
   index,
-  setIndex,
   page,
   setPage,
-  likedMovie,
-  setLikedMovie,
   datas,
   setDatas,
-  nbFilmFiltre,
   setNbFilmFiltre,
 }) {
   const [toggleOverview, setToggleOverview] = useState(false);
@@ -78,38 +75,42 @@ function MovieCard({
     };
     getMovies();
   }, [index, page, activeFiltre, setPage, setNbFilmFiltre, setDatas]);
-
+  const x = useMotionValue(0);
+  const background = useTransform(
+    x,
+    [-100, 0, 100],
+    ["#891616", "#27282c", "#045a11"]
+  );
   return (
-    <section className="movie-card-component ">
-      <img
-        className="movie-card-img"
-        src={`https://image.tmdb.org/t/p/w500/${posterPath()}`}
-        alt={datas?.vote_average}
-      />
-
-      <button
-        className={`overview-container ${toggleOverview ? "active" : ""}`}
-        onClick={toggle}
-        onKeyDown={toggle}
-        tabIndex={0}
-        type="button"
+    <motion.div style={{ background }} className="framer-background">
+      <motion.div
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        style={{ x }}
       >
-        <h2 className="title">{datas?.title}</h2>
-        <p className="notes"> note : {Math.round(note() * 100) / 100} /10</p>
-        <p className="overview"> {description()}</p>
-      </button>
-
-      <Like
-        setIndex={setIndex}
-        index={index}
-        page={page}
-        setPage={setPage}
-        datas={datas}
-        likedMovie={likedMovie}
-        setLikedMovie={setLikedMovie}
-        nbFilmFiltre={nbFilmFiltre}
-      />
-    </section>
+        <section className="movie-card-component ">
+          <img
+            className="movie-card-img"
+            src={`https://image.tmdb.org/t/p/w500/${posterPath()}`}
+            alt={datas?.vote_average}
+          />
+          <button
+            className={`overview-container ${toggleOverview ? "active" : ""}`}
+            onClick={toggle}
+            onKeyDown={toggle}
+            tabIndex={0}
+            type="button"
+          >
+            <h2 className="title">{datas?.title}</h2>
+            <p className="notes">
+              {" "}
+              note : {Math.round(note() * 100) / 100} /10
+            </p>
+            <p className="overview"> {description()}</p>
+          </button>
+        </section>
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -121,28 +122,8 @@ MovieCard.defaultProps = {
 MovieCard.propTypes = {
   activeFiltre: PropTypes.number,
   index: PropTypes.number.isRequired,
-  setIndex: PropTypes.func.isRequired,
   setPage: PropTypes.func.isRequired,
   page: PropTypes.number.isRequired,
-  setLikedMovie: PropTypes.func.isRequired,
-  likedMovie: PropTypes.arrayOf(
-    PropTypes.shape({
-      adult: PropTypes.bool.isRequired,
-      backdrop_path: PropTypes.string.isRequired,
-      genre_ids: PropTypes.arrayOf(PropTypes.number).isRequired,
-      id: PropTypes.number.isRequired,
-      original_language: PropTypes.string.isRequired,
-      original_title: PropTypes.string.isRequired,
-      overview: PropTypes.string.isRequired,
-      popularity: PropTypes.number.isRequired,
-      poster_path: PropTypes.string.isRequired,
-      release_date: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      video: PropTypes.bool.isRequired,
-      vote_average: PropTypes.number.isRequired,
-      vote_count: PropTypes.number.isRequired,
-    }).isRequired
-  ).isRequired,
   datas: PropTypes.shape({
     adult: PropTypes.bool,
     backdrop_path: PropTypes.string,
@@ -160,7 +141,6 @@ MovieCard.propTypes = {
     vote_count: PropTypes.number,
   }),
   setDatas: PropTypes.func.isRequired,
-  nbFilmFiltre: PropTypes.number.isRequired,
   setNbFilmFiltre: PropTypes.func.isRequired,
 };
 

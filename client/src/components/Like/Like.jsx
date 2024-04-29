@@ -67,6 +67,10 @@ function Like({
   );
 }
 
+Like.defaultProps = {
+  datas: {},
+};
+
 Like.propTypes = {
   index: PropTypes.number.isRequired,
   setIndex: PropTypes.func.isRequired,
@@ -107,7 +111,7 @@ Like.propTypes = {
     video: PropTypes.bool,
     vote_average: PropTypes.number,
     vote_count: PropTypes.number,
-  }).isRequired,
+  }),
 };
 
 export default Like;

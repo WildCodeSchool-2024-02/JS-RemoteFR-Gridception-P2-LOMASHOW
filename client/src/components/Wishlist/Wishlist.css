@@ -30,7 +30,7 @@
 }
 
 .wishlist-component > div > img {
-  width: 100px;
+  width: 150px;
   height: auto;
   border-radius: 1rem;
   margin: 0;
@@ -43,9 +43,10 @@
   width: 20px;
   height: auto;
   position: relative;
-  left: 5em;
-  bottom: 10em;
+  left: 8.5em;
+  bottom: 15em;
   background-color: grey;
+  text-align: center;
   border-radius: 7px;
 }
 
